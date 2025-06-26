@@ -16,13 +16,10 @@ function flowGame(player){
     
     while(player.level <= 5){
         const riddle = initObjRiddle(player.level);
-        const startTime = Date.now();
-        riddle.ask(player.name);
-        const endTime = Date.now() ;
-        player.recordTime(startTime,endTime);
+        riddle.ask(player);
         player.level++;
     }
-    console.log("We're done, well done Aniat for all the puzzles!\n");
+    console.log("We're done, well done Aniat for all the riddels!\n");
     player.showStats();
 }
 
