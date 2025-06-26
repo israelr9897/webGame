@@ -8,15 +8,14 @@ function returnStringOfTime(time){
 } 
 
 class Player{
+    level = 1;
     times = [];
     constructor(name){
         this.name = name;
     }
     recordTime = function(start, end){
         const gap = end - start;
-        console.log(returnStringOfTime(gap));
         this.times.push({gap : gap, gapInString : returnStringOfTime(gap)});
-        console.log(this.times);
     }
     showStats = function(){
         let total = 0;
@@ -24,17 +23,10 @@ class Player{
             total += time.gap;
         });
         const average = total / this.times.length;
-        console.log("total: " + total);
-        console.log("average: " + average);
+        console.log("total time: " + returnStringOfTime(total));
+        console.log("average time: " + returnStringOfTime(average));
     }
 }
-
-const myPlayer = new Player("israel");
-const st = Date.now();
-question("dfg");
-const end = Date.now()
-myPlayer.recordTime(st , end);
-myPlayer.showStats();
 
 export{
     Player
