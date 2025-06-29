@@ -7,7 +7,7 @@ import riddles from "./riddles/riddels.js";
 function welcome(){
     console.log("---------- Welcome to the game ----------\n");
     const name = rl.question("What your name?  ");
-    const level = rl.question("Choose difficulty: easy / medium / hard:")
+    const level = checkChoiceOfUser();
     const player = new Player(name, level);
     flowGame(player);
 }
@@ -21,22 +21,51 @@ function flowGame(player){
         if(choice === "n"){
             break;
         }
-        player.level = rl.question("Choose difficulty: easy / medium / hard:")
+        player.level = checkChoiceOfUser();
     }
     console.log("We're done, well done Aniat for all the riddels!\n");
     player.showStats();
 }
 
 function initObjRiddle(level){
+    let listOfRiddles = [];
     switch(level){
         case "easy":
-            return riddles.map(riddle => {if(riddle.level === "easy") {return new Riddle(riddle)}}).filter(ridlle => ridlle);
+            listOfRiddles = riddles
+            .map(riddle => {
+                if(riddle.level === "easy"){
+                    return new Riddle(riddle)
+                }})
+            .filter(ridlle => ridlle);
+            return listOfRiddles;
             
         case "medium":
-            return riddles.map(riddle => {if(riddle.level === "medium") {return new Riddle(riddle)}}).filter(ridlle => ridlle);
-            
+            listOfRiddles = riddles
+            .map(riddle => {
+                if(riddle.level === "medium"){
+                    return new Riddle(riddle)
+                }})
+            .filter(ridlle => ridlle);
+            return listOfRiddles;   
+
         case "hard":
-        return riddles.map(riddle => {if(riddle.level === "hard") {return new Riddle(riddle)}}).filter(ridlle => ridlle);
+            listOfRiddles = riddles
+            .map(riddle => {
+                if(riddle.level === "hard"){
+                    return new Riddle(riddle)
+                }})
+            .filter(ridlle => ridlle);
+            return listOfRiddles; 
     }
+}
+
+function checkChoiceOfUser(){
+    const listOfLevels = ["easy","medium","hard"];
+    let choice = rl.question("Choose difficulty: easy / medium / hard:\n").toLowerCase();
+    while(!listOfLevels.includes(choice)){
+        console.log("Invalid selection");
+        choice = rl.question("Please select again easy / medium / hard\n").toLowerCase();
+    }
+    return choice;
 }
 welcome();
