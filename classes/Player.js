@@ -14,13 +14,12 @@ class Player{
         this.level = level;
     }
     recordTime = function(start, end){
-        const gap = end - start;
-        this.times.push({gap : gap, gapInString : returnStringOfTime(gap)});
+        this.times.push(end - start);
     }
     showStats = function(){
         let total = 0;
         this.times.forEach(time => {
-            total += time.gap;
+            total += time;
         });
         const average = total / this.times.length;
         console.log("total time: " + returnStringOfTime(total));
