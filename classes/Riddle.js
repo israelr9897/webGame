@@ -9,7 +9,6 @@ class Riddle{
     }
     ask = function (player){
         let answer = "";
-        const startTime = Date.now();
         console.log("Riddle number - " + this.id);
         console.log("Level - " + this.name + "\n");
         while(!(answer === this.correctAnswer)){
@@ -22,6 +21,10 @@ class Riddle{
                 console.log("\nIncorrect answer, please try again.\n");
             }
         }
+    }
+    steartAsk = function (player){
+        const startTime = Date.now();
+        this.ask(player);
         const endTime = Date.now() ;
         player.recordTime(startTime, endTime);
     }

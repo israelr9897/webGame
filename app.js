@@ -13,10 +13,9 @@ function welcome(){
 
 function flowGame(player){
     console.log("\nLet's get started.");
-    
     while(player.level <= 5){
         const riddle = initObjRiddle(player.level);
-        riddle.ask(player);
+        riddle.steartAsk(player);
         player.level++;
     }
     console.log("We're done, well done Aniat for all the riddels!\n");
@@ -30,10 +29,13 @@ function initObjRiddle(level){
         
         case 2:
             return new Riddle(riddels.rr2);
+
         case 3:
             return new Riddle(riddels.rr3);
+
         case 4:
             return new Riddle(riddels.rr4);
+
         case 5:
             return new Riddle(riddels.rr5);
     }
