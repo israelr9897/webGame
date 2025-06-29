@@ -3,14 +3,14 @@ import rl from "readline-sync";
 class Riddle{
     constructor(riddle){
         this.id = riddle.id;
-        this.name = riddle.name;
+        this.level = riddle.level;
         this.taskDescription = riddle.taskDescription;
         this.correctAnswer = riddle.correctAnswer;
     }
     ask = function (player){
         let answer = "";
         console.log("Riddle number - " + this.id);
-        console.log("Level - " + this.name + "\n");
+        console.log("Level - " + this.level + "\n");
         while(!(answer === this.correctAnswer)){
             console.log(this.taskDescription);
             answer = rl.question("Enter your answer - "); 
@@ -22,7 +22,7 @@ class Riddle{
             }
         }
     }
-    steartAsk = function (player){
+    startAsk = function (player){
         const startTime = Date.now();
         this.ask(player);
         const endTime = Date.now() ;
