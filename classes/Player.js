@@ -8,10 +8,10 @@ function returnStringOfTime(time){
 } 
 
 class Player{
-    level = 1;
     times = [];
-    constructor(name){
-        this.name = name;
+    constructor(name, level){
+        this.name = name
+        this.level = level;
     }
     recordTime = function(start, end){
         const gap = end - start;

@@ -1,6 +1,8 @@
 export default {
     id: 5,
-    name: "High Math",
+    level: "hard",
+    name: "hard Math",
+    timeLimit: 7,
     taskDescription: "What is 4 to the power of 3 (4 ** 3) ?",
     correctAnswer: "64"
   };

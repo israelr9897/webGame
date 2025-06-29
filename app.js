@@ -1,43 +1,71 @@
 import rl from "readline-sync";
 import { Riddle } from "./classes/Riddle.js";
 import { Player } from "./classes/Player.js";
-import riddels from "./riddles/riddels.js";
+import riddles from "./riddles/riddels.js";
 
 
 function welcome(){
     console.log("---------- Welcome to the game ----------\n");
     const name = rl.question("What your name?  ");
-    const player = new Player(name);
+    const level = checkChoiceOfUser();
+    const player = new Player(name, level);
     flowGame(player);
 }
 
-function flowGame(player){
+function flowGame(player){    
     console.log("\nLet's get started.");
-    while(player.level <= 5){
-        const riddle = initObjRiddle(player.level);
-        riddle.steartAsk(player);
-        player.level++;
+    while(true){
+        const listOfRiddles = initObjRiddle(player.level);
+        listOfRiddles.forEach(riddle => riddle.startAsk(player));
+        const choice = rl.question("Would you like to continue to another level? (y/n)").toLowerCase();
+        if(choice === "n"){
+            break;
+        }
+        player.level = checkChoiceOfUser();
     }
     console.log("We're done, well done Aniat for all the riddels!\n");
     player.showStats();
 }
 
 function initObjRiddle(level){
+    let listOfRiddles = [];
     switch(level){
-        case 1:
-            return new Riddle(riddels.rr1);
-        
-        case 2:
-            return new Riddle(riddels.rr2);
+        case "easy":
+            listOfRiddles = riddles
+            .map(riddle => {
+                if(riddle.level === "easy"){
+                    return new Riddle(riddle)
+                }})
+            .filter(ridlle => ridlle);
+            return listOfRiddles;
+            
+        case "medium":
+            listOfRiddles = riddles
+            .map(riddle => {
+                if(riddle.level === "medium"){
+                    return new Riddle(riddle)
+                }})
+            .filter(ridlle => ridlle);
+            return listOfRiddles;   
 
-        case 3:
-            return new Riddle(riddels.rr3);
-
-        case 4:
-            return new Riddle(riddels.rr4);
-
-        case 5:
-            return new Riddle(riddels.rr5);
+        case "hard":
+            listOfRiddles = riddles
+            .map(riddle => {
+                if(riddle.level === "hard"){
+                    return new Riddle(riddle)
+                }})
+            .filter(ridlle => ridlle);
+            return listOfRiddles; 
     }
+}
+
+function checkChoiceOfUser(){
+    const listOfLevels = ["easy","medium","hard"];
+    let choice = rl.question("Choose difficulty: easy / medium / hard:\n").toLowerCase();
+    while(!listOfLevels.includes(choice)){
+        console.log("Invalid selection");
+        choice = rl.question("Please select again easy / medium / hard\n").toLowerCase();
+    }
+    return choice;
 }
 welcome();
