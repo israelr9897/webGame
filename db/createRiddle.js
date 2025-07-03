@@ -1,35 +1,21 @@
-import { create } from "domain";
-import fs from "fs";
+import fs from "fs/promises";
 
-function readFile(puth){
-    return new Promise((res,rej) => {
-        fs.readFile(puth, "utf-8", (err, data) =>{
-            if(err){
-                rej("read file error massege: " + err.message)
-            }
-            res(JSON.parse(data))
-        })
-    })
+async function readFile(path) {
+  try {
+    const riddles = await fs.readFile(path, "utf-8");
+    return JSON.parse(riddles);
+  } catch (err) {
+    console.log("read file error massege: " + err.message);
+  }
 }
 
-async function CreateRiddle(puth, riddle) {
-    let riddels = await readFile(puth).then(data => data).catch(p => console.log(p));
-    console.log(riddels);
-    riddels.push(riddle);
-    return new Promise((res, rej) => {
-    fs.writeFile(puth, JSON.stringify(riddels), "utf-8", (err) => {
-      if (err) {
-        rej("CreateRiddle error massege: " + err);
-      }
-      res("added riddle");
-    });
-  });
+async function CreateRiddleInDB(path, data) {
+  try {
+    fs.writeFile(path, JSON.stringify(data), "utf-8", (err) => {});
+    console.log("added riddle to db");
+  } catch (err) {
+    console.log("CreateRiddle error massege: " + err);
+  }
 }
 
-CreateRiddle("./riddles.txt", "erf")
-  .then((p) => {
-    console.log(p);
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+export { readFile, CreateRiddleInDB };

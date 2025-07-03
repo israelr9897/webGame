@@ -1,1 +1,56 @@
-[{"id": 1,"level": "easy","name": "Easy Math","timeLimit": 5,"hint": "between 5 - 10","taskDescription": "What is 5 + 3?","correctAnswer": "8"},{"id": 2, "level": "easy", "name": "Easy Math", "timeLimit": 5, "hint": "between 45 - 50", "taskDescription": "What is 28 + 20?", "correctAnswer": "48"},{"id": 3, "level": "medium", "name": "Medium Math", "timeLimit": 6, "hint": "between 10 - 20", "taskDescription": "What is 5 * 3?", "correctAnswer": "15"},{  "id": 4, "level": "medium", "name": "Medium Math", "timeLimit": 6, "hint": "between 10 - 20", "taskDescription": "What is 45 / 3 ?", "correctAnswer": "15"},{ "id": 5, "level": "hard", "name": "hard Math", "timeLimit": 7, "hint": "between 55 - 75", "taskDescription": "What is 4 to the power of 3 (4 ** 3) ?", "correctAnswer": "64"}]
+[
+  {
+    "id": 1,
+    "level": "easy",
+    "name": "Easy Math",
+    "timeLimit": 5,
+    "hint": "between 5 - 10",
+    "taskDescription": "What is 5 + 3?",
+    "correctAnswer": "8"
+  },
+  {
+    "id": 2,
+    "level": "easy",
+    "name": "Easy Math",
+    "timeLimit": 5,
+    "hint": "between 45 - 50",
+    "taskDescription": "What is 28 + 20?",
+    "correctAnswer": "48"
+  },
+  {
+    "id": 3,
+    "level": "medium",
+    "name": "Medium Math",
+    "timeLimit": 6,
+    "hint": "between 10 - 20",
+    "taskDescription": "What is 5 * 3?",
+    "correctAnswer": "15"
+  },
+  {
+    "id": 4,
+    "level": "medium",
+    "name": "Medium Math",
+    "timeLimit": 6,
+    "hint": "between 10 - 20",
+    "taskDescription": "What is 45 / 3 ?",
+    "correctAnswer": "15"
+  },
+  {
+    "id": 5,
+    "level": "hard",
+    "name": "hard Math",
+    "timeLimit": 7,
+    "hint": "between 55 - 75",
+    "taskDescription": "What is 4 to the power of 3 (4 ** 3) ?",
+    "correctAnswer": "64"
+  },
+  {
+    "id": 6,
+    "level": "medium",
+    "name": "add",
+    "timeLimit": 5,
+    "hint": "between 1 - 5",
+    "taskDescription": "What is 1.5 + 2.5?",
+    "correctAnswer": "4"
+  }
+]
