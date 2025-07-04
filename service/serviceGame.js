@@ -1,5 +1,7 @@
 import { welcome } from "../app.js";
-import { serviceCreateRiddle } from "./serviceRiddle.js";
+import { PrintAllRiddles, serviceCreateRiddle, updateRiddle } from "./serviceRiddle.js";
+
+const path = "../db/riddles.txt";
 
 function MannegerGame(choice) {
   switch (choice) {
@@ -8,7 +10,15 @@ function MannegerGame(choice) {
       break;
 
     case "2":
-      serviceCreateRiddle("../db/riddels.txt");
+      serviceCreateRiddle(path);
+      break;
+
+    case "3":
+      PrintAllRiddles(path);
+      break;
+
+    case "4":
+      updateRiddle(path);
       break;
   }
 }
