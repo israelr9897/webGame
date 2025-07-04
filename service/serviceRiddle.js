@@ -97,5 +97,4 @@ async function deleteRiddle(path) {
   }
 }
 
-deleteRiddle("../db/riddles.txt")
 export {checkLevelSelction, serviceCreateRiddle, PrintAllRiddles, updateRiddle, deleteRiddle };

@@ -1,5 +1,5 @@
 import { welcome } from "../app.js";
-import { PrintAllRiddles, serviceCreateRiddle, updateRiddle } from "./serviceRiddle.js";
+import { deleteRiddle, PrintAllRiddles, serviceCreateRiddle, updateRiddle } from "./serviceRiddle.js";
 
 const path = "../db/riddles.txt";
 
@@ -19,6 +19,10 @@ function MannegerGame(choice) {
 
     case "4":
       updateRiddle(path);
+      break;
+
+    case "5":
+      deleteRiddle(path);
       break;
   }
 }
