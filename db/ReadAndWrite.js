@@ -9,7 +9,7 @@ async function readFile(path) {
   }
 }
 
-async function CreateRiddleInDB(path, data) {
+async function writeRiddleInDB(path, data) {
   try {
     fs.writeFile(path, JSON.stringify(data), "utf-8", (err) => {});
     console.log("added riddle to db");
@@ -18,4 +18,4 @@ async function CreateRiddleInDB(path, data) {
   }
 }
 
-export { readFile, CreateRiddleInDB };
+export { readFile, writeRiddleInDB };
