@@ -1,12 +1,12 @@
 import rl from "readline-sync";
-import { writeRiddleInDB, readFile } from "../db/ReadAndWrite.js";
+import { writeRiddleInDB, readFile } from "../db/CRUDOfRiddles.js";
 
-async function serviceCreateRiddle(path){
-  let allRiddels = await readFile(path);
+async function serviceCreateRiddle(){
+  let allRiddels = await readFile();
   const ridlle = CreateRiddleObj();
   ridlle.id = allRiddels.length + 1;
   allRiddels.push(ridlle);
-  await writeRiddleInDB(path, allRiddels);
+  await writeRiddleInDB(allRiddels);
 }
 
 function checkLevelSelction() {
@@ -45,8 +45,8 @@ function CreateRiddleObj() {
   return riddleObj;
 }
 
-async function PrintAllRiddles(path){
-  console.log(await readFile(path));
+async function PrintAllRiddles(){
+  console.log(await readFile());
 }
 
 function changeFromUserToRiddle(riddle){
@@ -64,8 +64,8 @@ function changeFromUserToRiddle(riddle){
   console.log("Changes saved successfully");
 }
 
-async function updateRiddle(path) {
-  let allRiddels = await readFile(path);
+async function updateRiddle() {
+  let allRiddels = await readFile();
   console.log(allRiddels);
   const id = Number(rl.question("Enter the riddle ID. "));
   allRiddels.forEach(riddle => {
@@ -74,11 +74,11 @@ async function updateRiddle(path) {
       riddle = changeFromUserToRiddle(riddle);
     }
   });
-  writeRiddleInDB(path, allRiddels);
+  writeRiddleInDB(allRiddels);
 }
 
-async function deleteRiddle(path) {
-  let allRiddels = await readFile(path);
+async function deleteRiddle() {
+  let allRiddels = await readFile();
   console.log(allRiddels);
   const id = Number(rl.question("Enter the riddle ID. "));
   allRiddels.forEach(riddle => {
@@ -93,7 +93,7 @@ async function deleteRiddle(path) {
   }
   else if(input === "y"){
     allRiddels = allRiddels.filter(riddle => riddle.id !== id);
-    writeRiddleInDB(path,allRiddels);
+    writeRiddleInDB(allRiddels);
   }
 }
 
