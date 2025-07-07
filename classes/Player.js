@@ -23,7 +23,6 @@ class Player {
       total += time.gap;
     });
     this.average = total / this.times.length;
-    // this.lowestTime = {time : this.average, timeOfStr: returnStringOfTime(this.average)};
     console.log("total time: " + returnStringOfTime(total));
     console.log("average time: " + returnStringOfTime(this.average));
   };

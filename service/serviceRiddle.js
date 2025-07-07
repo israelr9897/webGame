@@ -1,5 +1,6 @@
 import rl from "readline-sync";
 import { writeRiddleInDB, readFileToRiddles } from "../db/DALriddles.js";
+import {Riddle} from "../classes/Riddle.js";
 
 let ALLRIDDLES = [];
 
