@@ -1,18 +1,21 @@
 import rl from "readline-sync";
 import { writeRiddleInDB, readFileToRiddles } from "../db/DALriddles.js";
+import {Riddle} from "../classes/Riddle.js";
 
+const URL = "http://localhost:3100";
 let ALLRIDDLES = [];
 
 async function getRiddels() {
-  ALLRIDDLES = await readFileToRiddles();
+  ALLRIDDLES = ((await fetch(URL + "/riddle")).json());
+  console.log(await ALLRIDDLES);
 }
 
-async function serviceCreateRiddle(){
-  const ridlle = CreateRiddleObj();
-  ridlle.id = ALLRIDDLES.length + 1;
-  ALLRIDDLES.push(ridlle);
-  await writeRiddleInDB(ALLRIDDLES);
-}
+// async function serviceCreateRiddle(){
+//   const ridlle = CreateRiddleObj();
+//   ridlle.id = ALLRIDDLES.length + 1;
+//   ALLRIDDLES.push(ridlle);
+//   await writeRiddleInDB(ALLRIDDLES);
+// }
 
 function checkLevelSelction() {
   const listOfLevels = ["easy", "medium", "hard"];
@@ -50,26 +53,39 @@ function CreateRiddleObj() {
   };
   return riddleObj;
 }
-const URL = "http://localhost:3100";
 
 async function PrintAllRiddles(){
   const riddles = ((await fetch(URL + "/riddle")).json());
   console.log(await riddles);
 }
 
-async function addRiddle(obj) {
+async function addRiddle(newRiddle) {
   const da = ((await fetch(URL + "/riddles/addRiddle", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-api-key": "reqres-free-v1",
       },
-      body: JSON.stringify(obj),
+      body: JSON.stringify(newRiddle),
     })).text());
     console.log(await da);
 }
-addRiddle(CreateRiddleObj());
+
+async function updateRiddleToServer(riddle) {
+  fetch(URL + "/riddles/updateRiddle")
+  const da = ((await fetch(URL + "/riddles/updateRiddle", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "reqres-free-v1",
+    },
+    body: JSON.stringify(riddle),
+  })).text());
+  console.log(await da);
+}
+// addRiddle(CreateRiddleObj());
 // PrintAllRiddles()
+updateRiddle();
 function changeFromUserToRiddle(riddle){
   let isExit = false;
   while(!isExit){
@@ -83,18 +99,19 @@ function changeFromUserToRiddle(riddle){
     }
   }
   console.log("Changes saved successfully");
+  return riddle;
 }
 
 async function updateRiddle() {
-  console.log(ALLRIDDLES);
+  await getRiddels()
   const id = Number(rl.question("Enter the riddle ID. "));
   ALLRIDDLES.forEach(riddle => {
     if(riddle.id === id){
       console.log(riddle);
       riddle = changeFromUserToRiddle(riddle);
+      updateRiddleToServer(riddle);
     }
   });
-  writeRiddleInDB(ALLRIDDLES);
 }
 
 async function deleteRiddle() {
@@ -146,4 +163,4 @@ function initObjRiddle(level) {
 }
 
 
-export {getRiddels, ALLRIDDLES, checkLevelSelction, serviceCreateRiddle, PrintAllRiddles, updateRiddle, deleteRiddle, initObjRiddle};
+export {getRiddels, ALLRIDDLES, checkLevelSelction, PrintAllRiddles, updateRiddle, deleteRiddle, initObjRiddle};
