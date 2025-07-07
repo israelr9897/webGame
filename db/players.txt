@@ -1,1 +1,1 @@
-[{"times":[{"gap":1768,"gapInString":"0:0:1"},{"gap":2584,"gapInString":"0:0:2"}],"lowestTime":{"time":2176,"timeOfStr":"0:0:2"},"id":1,"name":"israel"},{"times":[{"gap":15904,"gapInString":"0:0:15"},{"gap":13312,"gapInString":"0:0:13"},{"gap":4264,"gapInString":"0:0:4"},{"gap":3360,"gapInString":"0:0:3"}],"lowestTime":{"time":9210,"timeOfStr":"0:0:9"},"id":1,"name":"israel"}]
+[{"times":[{"gap":18124,"gapInString":"0:0:18"},{"gap":10029,"gapInString":"0:0:10"}],"lowestTime":{"time":3320,"timeOfStr":"0:0:3"},"average":14076.5,"id":1,"name":"Israel"}]

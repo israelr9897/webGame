@@ -1,39 +1,42 @@
 import rl from "readline-sync";
 import { flowGame } from "../app.js";
-import { deleteRiddle, PrintAllRiddles, serviceCreateRiddle, updateRiddle } from "./serviceRiddle.js";
+import {
+  ALLRIDDLES,
+  deleteRiddle,
+  PrintAllRiddles,
+  serviceCreateRiddle,
+  updateRiddle,
+} from "./serviceRiddle.js";
 import { getPlayerObj } from "./servicePlayer.js";
+import { Riddle } from "../classes/Riddle.js";
+
 
 function initObjRiddle(level) {
   let listOfRiddles = [];
+  // console.log(ALLRIDDLES);
   switch (level) {
     case "easy":
-      listOfRiddles = riddles
-        .map((riddle) => {
-          if (riddle.level === "easy") {
-            return new Riddle(riddle);
-          }
-        })
-        .filter((ridlle) => ridlle);
+      listOfRiddles = ALLRIDDLES.map((riddle) => {
+        if (riddle.level === "easy") {
+          return new Riddle(riddle);
+        }
+      }).filter((ridlle) => ridlle);
       return listOfRiddles;
 
     case "medium":
-      listOfRiddles = riddles
-        .map((riddle) => {
-          if (riddle.level === "medium") {
-            return new Riddle(riddle);
-          }
-        })
-        .filter((ridlle) => ridlle);
+      listOfRiddles = ALLRIDDLES.map((riddle) => {
+        if (riddle.level === "medium") {
+          return new Riddle(riddle);
+        }
+      }).filter((ridlle) => ridlle);
       return listOfRiddles;
 
     case "hard":
-      listOfRiddles = riddles
-        .map((riddle) => {
-          if (riddle.level === "hard") {
-            return new Riddle(riddle);
-          }
-        })
-        .filter((ridlle) => ridlle);
+      listOfRiddles = ALLRIDDLES.map((riddle) => {
+        if (riddle.level === "hard") {
+          return new Riddle(riddle);
+        }
+      }).filter((ridlle) => ridlle);
       return listOfRiddles;
   }
 }
@@ -41,7 +44,7 @@ function initObjRiddle(level) {
 function MannegerGame(choice) {
   switch (choice) {
     case "1":
-      Game();
+      flowGame();
       break;
 
     case "2":
@@ -70,6 +73,4 @@ async function welcome() {
   return player;
 }
 
-
-
-export { initObjRiddle, MannegerGame, welcome}
+export { initObjRiddle, MannegerGame, welcome };

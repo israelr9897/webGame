@@ -1,12 +1,17 @@
 import rl from "readline-sync";
-import { writeRiddleInDB, readFile } from "../db/CRUDOfRiddles.js";
+import { writeRiddleInDB, readFileToRiddles } from "../db/DALriddles.js";
+
+let ALLRIDDLES = [];
+
+async function createAllReddles() {
+  ALLRIDDLES = await readFileToRiddles();
+}
 
 async function serviceCreateRiddle(){
-  let allRiddels = await readFile();
   const ridlle = CreateRiddleObj();
-  ridlle.id = allRiddels.length + 1;
-  allRiddels.push(ridlle);
-  await writeRiddleInDB(allRiddels);
+  ridlle.id = ALLRIDDLES.length + 1;
+  ALLRIDDLES.push(ridlle);
+  await writeRiddleInDB(ALLRIDDLES);
 }
 
 function checkLevelSelction() {
@@ -46,7 +51,7 @@ function CreateRiddleObj() {
 }
 
 async function PrintAllRiddles(){
-  console.log(await readFile());
+  console.log(ALLRIDDLES);
 }
 
 function changeFromUserToRiddle(riddle){
@@ -65,23 +70,21 @@ function changeFromUserToRiddle(riddle){
 }
 
 async function updateRiddle() {
-  let allRiddels = await readFile();
-  console.log(allRiddels);
+  console.log(ALLRIDDLES);
   const id = Number(rl.question("Enter the riddle ID. "));
-  allRiddels.forEach(riddle => {
+  ALLRIDDLES.forEach(riddle => {
     if(riddle.id === id){
       console.log(riddle);
       riddle = changeFromUserToRiddle(riddle);
     }
   });
-  writeRiddleInDB(allRiddels);
+  writeRiddleInDB(ALLRIDDLES);
 }
 
 async function deleteRiddle() {
-  let allRiddels = await readFile();
-  console.log(allRiddels);
+  console.log(ALLRIDDLES);
   const id = Number(rl.question("Enter the riddle ID. "));
-  allRiddels.forEach(riddle => {
+  ALLRIDDLES.forEach(riddle => {
     if(riddle.id === id){
       console.log(riddle);
     }
@@ -92,9 +95,9 @@ async function deleteRiddle() {
     return;
   }
   else if(input === "y"){
-    allRiddels = allRiddels.filter(riddle => riddle.id !== id);
-    writeRiddleInDB(allRiddels);
+    ALLRIDDLES = ALLRIDDLES.filter(riddle => riddle.id !== id);
+    writeRiddleInDB(ALLRIDDLES);
   }
 }
 
-export {checkLevelSelction, serviceCreateRiddle, PrintAllRiddles, updateRiddle, deleteRiddle };
+export {createAllReddles, ALLRIDDLES, checkLevelSelction, serviceCreateRiddle, PrintAllRiddles, updateRiddle, deleteRiddle};

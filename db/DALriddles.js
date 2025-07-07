@@ -5,9 +5,9 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const filePath = path.join(__dirname, './players.txt');
+const filePath = path.join(__dirname, './riddles.txt');
 
-async function readFile() {
+async function readFileToRiddles() {
   try {
     const riddles = await fs.readFile(filePath, "utf-8");
     return JSON.parse(riddles);
@@ -25,4 +25,4 @@ async function writeRiddleInDB(data) {
   }
 }
 
-export { readFile, writeRiddleInDB };
+export { readFileToRiddles, writeRiddleInDB };
