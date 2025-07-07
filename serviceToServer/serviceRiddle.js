@@ -1,6 +1,5 @@
 import rl from "readline-sync";
 import { writeRiddleInDB, readFileToRiddles } from "../db/DALriddles.js";
-import {Riddle} from "../classes/Riddle.js";
 
 let ALLRIDDLES = [];
 
@@ -27,6 +26,7 @@ function checkLevelSelction() {
   }
   return choice;
 }
+
 function checkUpdateSelction() {
   const listOfFilds = ["level","name","timeLimit","hint","taskDescription","correctAnswer"];
   console.log("Enter the riddle chenge (level / name / timeLimit / hint / taskDescription / correctAnswer) :");
@@ -50,11 +50,26 @@ function CreateRiddleObj() {
   };
   return riddleObj;
 }
+const URL = "http://localhost:3100";
 
 async function PrintAllRiddles(){
-  console.log(ALLRIDDLES);
+  const riddles = ((await fetch(URL + "/riddle")).json());
+  console.log(await riddles);
 }
 
+async function addRiddle(obj) {
+  const da = ((await fetch(URL + "/riddles/addRiddle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "reqres-free-v1",
+      },
+      body: JSON.stringify(obj),
+    })).text());
+    console.log(await da);
+}
+addRiddle(CreateRiddleObj());
+// PrintAllRiddles()
 function changeFromUserToRiddle(riddle){
   let isExit = false;
   while(!isExit){
