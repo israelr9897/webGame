@@ -3,7 +3,7 @@ import { writeRiddleInDB, readFileToRiddles } from "../db/DALriddles.js";
 
 let ALLRIDDLES = [];
 
-async function createAllReddles() {
+async function getRiddels() {
   ALLRIDDLES = await readFileToRiddles();
 }
 
@@ -100,4 +100,34 @@ async function deleteRiddle() {
   }
 }
 
-export {createAllReddles, ALLRIDDLES, checkLevelSelction, serviceCreateRiddle, PrintAllRiddles, updateRiddle, deleteRiddle};
+function initObjRiddle(level) {
+  let listOfRiddles = [];
+  switch (level) {
+    case "easy":
+      listOfRiddles = ALLRIDDLES.map((riddle) => {
+        if (riddle.level === "easy") {
+          return new Riddle(riddle);
+        }
+      }).filter((ridlle) => ridlle);
+      return listOfRiddles;
+
+    case "medium":
+      listOfRiddles = ALLRIDDLES.map((riddle) => {
+        if (riddle.level === "medium") {
+          return new Riddle(riddle);
+        }
+      }).filter((ridlle) => ridlle);
+      return listOfRiddles;
+
+    case "hard":
+      listOfRiddles = ALLRIDDLES.map((riddle) => {
+        if (riddle.level === "hard") {
+          return new Riddle(riddle);
+        }
+      }).filter((ridlle) => ridlle);
+      return listOfRiddles;
+  }
+}
+
+
+export {getRiddels, ALLRIDDLES, checkLevelSelction, serviceCreateRiddle, PrintAllRiddles, updateRiddle, deleteRiddle, initObjRiddle};
