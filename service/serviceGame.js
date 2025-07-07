@@ -1,47 +1,42 @@
 import rl from "readline-sync";
-import { flowGame } from "../app.js";
 import {
+  getRiddels,
   ALLRIDDLES,
   deleteRiddle,
   PrintAllRiddles,
+  checkLevelSelction,
   serviceCreateRiddle,
   updateRiddle,
+  initObjRiddle
 } from "./serviceRiddle.js";
 import { getPlayerObj } from "./servicePlayer.js";
-import { Riddle } from "../classes/Riddle.js";
 
-
-function initObjRiddle(level) {
-  let listOfRiddles = [];
-  // console.log(ALLRIDDLES);
-  switch (level) {
-    case "easy":
-      listOfRiddles = ALLRIDDLES.map((riddle) => {
-        if (riddle.level === "easy") {
-          return new Riddle(riddle);
-        }
-      }).filter((ridlle) => ridlle);
-      return listOfRiddles;
-
-    case "medium":
-      listOfRiddles = ALLRIDDLES.map((riddle) => {
-        if (riddle.level === "medium") {
-          return new Riddle(riddle);
-        }
-      }).filter((ridlle) => ridlle);
-      return listOfRiddles;
-
-    case "hard":
-      listOfRiddles = ALLRIDDLES.map((riddle) => {
-        if (riddle.level === "hard") {
-          return new Riddle(riddle);
-        }
-      }).filter((ridlle) => ridlle);
-      return listOfRiddles;
+async function flowGame() {
+  let player = await welcome()
+  let level = checkLevelSelction();
+  console.log("\nLet's get started.");
+  while (true) {
+    const listOfRiddles = initObjRiddle(level);
+    console.log( listOfRiddles);
+    listOfRiddles.forEach((riddle) => riddle.startAsk(player));
+    const choice = rl
+    .question("Would you like to continue to another level? (y/n)")
+    .toLowerCase();
+    if (choice === "n") {
+      break;
+    }
+    console.log("Choose difficulty: easy / medium / hard:\n");
+    level = checkLevelSelction();
   }
+  console.log("We're done, well done Aniat for all the riddels!\n");
+  player.showStats();
+  player = isLowerTime(player);
+  const players = await updateDataToPlayer(player);
+  await createPlayer(players);
 }
 
-function MannegerGame(choice) {
+async function MannegerGame(choice) {
+  await getRiddels()
   switch (choice) {
     case "1":
       flowGame();

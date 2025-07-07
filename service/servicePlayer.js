@@ -1,6 +1,6 @@
 import rl from "readline-sync";
 import { Player } from "../classes/Player.js";
-import { createPlayer , readFileToPlayers} from "../db/DALplayer.js";
+import {readFileToPlayers} from "../db/DALplayer.js";
 
 function returnStringOfTime(time){
     const seconds = Math.floor((time / 1000) % 60);
