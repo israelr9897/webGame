@@ -1,13 +1,16 @@
 import { returnStringOfTime } from "../service/servicePlayer.js";
 
 class Player {
-  constructor(id, name) {
+  times = [];
+  lowestTime;
+  average = 0;
+  
+  constructor(id, name, lowestTime) {
     this.id = id;
     this.name = name;
+    this.lowestTime = lowestTime;
   }
 
-  times = [];
-  lowestTime = {};
 
   recordTime = function (start, end) {
     const gap = end - start;
@@ -19,10 +22,10 @@ class Player {
     this.times.forEach((time) => {
       total += time.gap;
     });
-    const average = total / this.times.length;
-    this.lowestTime = {time : average, timeOfStr: returnStringOfTime(average)};
+    this.average = total / this.times.length;
+    // this.lowestTime = {time : this.average, timeOfStr: returnStringOfTime(this.average)};
     console.log("total time: " + returnStringOfTime(total));
-    console.log("average time: " + returnStringOfTime(average));
+    console.log("average time: " + returnStringOfTime(this.average));
   };
 }
 
