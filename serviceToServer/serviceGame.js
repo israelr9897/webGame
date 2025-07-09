@@ -1,27 +1,31 @@
 import rl from "readline-sync";
 import {
+  addRiddle,
   getRiddels,
-  ALLRIDDLES,
   deleteRiddle,
   PrintAllRiddles,
   checkLevelSelction,
-  serviceCreateRiddle,
   updateRiddle,
-  initObjRiddle
+  initObjRiddle,
 } from "./serviceRiddle.js";
-import { getPlayerObj } from "./servicePlayer.js";
+import {
+  getPlayerObj,
+  isLowerTime,
+  updateDataToPlayer,
+} from "./servicePlayer.js";
+import { createPlayer } from "../db/DALplayer.js";
 
 async function flowGame() {
-  let player = await welcome()
+  let player = await welcome();
   let level = checkLevelSelction();
   console.log("\nLet's get started.");
   while (true) {
     const listOfRiddles = initObjRiddle(level);
-    console.log( listOfRiddles);
+    console.log(listOfRiddles);
     listOfRiddles.forEach((riddle) => riddle.startAsk(player));
     const choice = rl
-    .question("Would you like to continue to another level? (y/n)")
-    .toLowerCase();
+      .question("Would you like to continue to another level? (y/n)")
+      .toLowerCase();
     if (choice === "n") {
       break;
     }
@@ -36,14 +40,14 @@ async function flowGame() {
 }
 
 async function MannegerGame(choice) {
-  await getRiddels()
+  await getRiddels();
   switch (choice) {
     case "1":
       flowGame();
       break;
 
     case "2":
-      serviceCreateRiddle();
+      addRiddle();
       break;
 
     case "3":

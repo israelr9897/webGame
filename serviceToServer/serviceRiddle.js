@@ -11,13 +11,6 @@ async function getRiddels() {
   ALLRIDDLES = await response.json();
 }
 
-// async function serviceCreateRiddle(){
-//   const ridlle = CreateRiddleObj();
-//   ridlle.id = ALLRIDDLES.length + 1;
-//   ALLRIDDLES.push(ridlle);
-//   await writeRiddleInDB(ALLRIDDLES);
-// }
-
 function checkLevelSelction() {
   const listOfLevels = ["easy", "medium", "hard"];
   console.log("Enter the riddle level (easy / medium / hard):  ");
@@ -74,7 +67,8 @@ async function PrintAllRiddles() {
   console.log(riddles);
 }
 
-async function addRiddle(newRiddle) {
+async function addRiddle() {
+  const newRiddle = CreateRiddleObj();
   const response = await fetch(URL + "/riddles/addRiddle", {
     method: "POST",
     headers: {
@@ -97,22 +91,19 @@ async function updateRiddleToServer(riddle) {
   const data = await response.json();
   console.log(data);
 }
-async function deleteToServer(id){
+async function deleteToServer(idRiddle){
   const response = await fetch(URL + "/riddles/deleteRiddle", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({idRiddle: id}),
+    body: JSON.stringify({id: idRiddle}),
   });
   const data = await response.json();
   console.log(data);
 
 }
-// addRiddle(CreateRiddleObj());
-// PrintAllRiddles();
-// updateRiddle();
-deleteRiddle()
+
 function changeFromUserToRiddle(riddle) {
   let isExit = false;
   while (!isExit) {
@@ -162,7 +153,6 @@ async function deleteRiddle() {
     return;
   } else if (input === "y") {
     ALLRIDDLES = ALLRIDDLES.filter((riddle) => riddle.id !== id);
-    // writeRiddleInDB(ALLRIDDLES);
     deleteToServer(id);
   }
 }
@@ -198,6 +188,7 @@ function initObjRiddle(level) {
 
 export {
   getRiddels,
+  addRiddle,
   ALLRIDDLES,
   checkLevelSelction,
   PrintAllRiddles,
