@@ -6,7 +6,7 @@ async function getRiddels() {
   ALLRIDDLES = await response.json();
 }
 
-async function addRiddleToServer(newRiddle) {
+async function addRiddleApi(newRiddle) {
   const response = await fetch(URL + "/riddles/addRiddle", {
     method: "POST",
     headers: {
@@ -18,7 +18,7 @@ async function addRiddleToServer(newRiddle) {
   console.log(data);
 }
 
-async function updateRiddleToServer(riddle) {
+async function updateRiddleApi(riddle) {
   try {
     const response = await fetch(URL + "/riddles/updateRiddle", {
       method: "PUT",
@@ -34,7 +34,7 @@ async function updateRiddleToServer(riddle) {
   }
 }
 
-async function deleteToServer(idRiddle) {
+async function deleteRiddleApi(idRiddle) {
   const response = await fetch(URL + "/riddles/deleteRiddle", {
     method: "DELETE",
     headers: {
@@ -49,7 +49,7 @@ async function deleteToServer(idRiddle) {
 export {
   ALLRIDDLES,
   getRiddels,
-  addRiddleToServer,
-  deleteToServer,
-  updateRiddleToServer,
+  addRiddleApi,
+  deleteRiddleApi,
+  updateRiddleApi,
 };
