@@ -2,9 +2,9 @@ import rl from "readline-sync";
 import { Riddle } from "../classes/Riddle.js";
 import {
   ALLRIDDLES,
-  addRiddleToServer,
-  deleteToServer,
-  updateRiddleToServer,
+  addRiddleApi,
+  deleteRiddleApi,
+  pdateRiddleApi,
 } from "./apiClient.js";
 import {
   changeFromUserToRiddle,
@@ -13,9 +13,9 @@ import {
   CreateRiddleObj,
 } from "./utilis/functions.js";
 
-function addRiddleToServer() {
+function addRiddleApi() {
   const newRiddle = CreateRiddleObj();
-  addRiddleToServer(newRiddle);
+  addRiddleApi(newRiddle);
 }
 
 async function updateRiddle() {
@@ -25,7 +25,7 @@ async function updateRiddle() {
   if (riddle) {
     const newRiddle = changeFromUserToRiddle(riddle);
     Object.assign(riddle, newRiddle);
-    await updateRiddleToServer(riddle);
+    await updateRiddleApi(riddle);
     return;
   }
   console.log("The ID you selected does not exist.");
@@ -47,7 +47,7 @@ async function deleteRiddle() {
     return;
   } else if (input === "y") {
     ALLRIDDLES = ALLRIDDLES.filter((riddle) => riddle.id !== id);
-    deleteToServer(id);
+    deleteRiddleApi(id);
   }
 }
 
@@ -81,7 +81,7 @@ function initObjRiddle(level) {
 }
 
 export {
-  addRiddleToServer as addRiddle,
+  addRiddleApi as addRiddle,
   ALLRIDDLES,
   checkLevelSelction,
   PrintAllRiddles,
