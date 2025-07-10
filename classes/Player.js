@@ -1,4 +1,4 @@
-import { returnStringOfTime } from "../service/servicePlayer.js";
+import { returnStringOfTime } from "../serviceToServer/servicePlayer.js";
 
 class Player {
   times = [];
