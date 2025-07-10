@@ -1,7 +1,7 @@
 import rl from "readline-sync";
+import { getRiddels } from "./apiClient.js";
 import {
   addRiddle,
-  getRiddels,
   deleteRiddle,
   PrintAllRiddles,
   checkLevelSelction,
