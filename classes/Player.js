@@ -1,20 +1,19 @@
-import { returnStringOfTime } from "../serviceToServer/servicePlayer.js";
+import { returnStringOfTime } from "../services/servicePlayer.js";
 
 class Player {
   times = [];
   lowestTime;
   average = 0;
-  
+
   constructor(id, name, lowestTime) {
     this.id = id;
     this.name = name;
     this.lowestTime = lowestTime;
   }
 
-
   recordTime = function (start, end) {
     const gap = end - start;
-    this.times.push({gap : gap, gapInString : returnStringOfTime(gap)});
+    this.times.push({ gap: gap, gapInString: returnStringOfTime(gap) });
   };
 
   showStats = function () {
