@@ -7,7 +7,7 @@ const URL = "http://localhost:3100";
 let ALLRIDDLES = [];
 
 async function getRiddels() {
-  const response = await fetch(URL + "/riddle");
+  const response = await fetch(URL + "/riddles");
   ALLRIDDLES = await response.json();
 }
 
@@ -36,14 +36,13 @@ function checkUpdateSelction() {
   console.log(
     "Enter the riddle chenge (level / name / timeLimit / hint / taskDescription / correctAnswer) :"
   );
-  let choice = rl.question().toLowerCase();
+  let choice = rl.question();
   while (!listOfFilds.includes(choice)) {
     console.log("Invalid selection");
     choice = rl
       .question(
         "Please select again level / name / timeLimit / hint / taskDescription / correctAnswer\n"
-      )
-      .toLowerCase();
+      );
   }
   return choice;
 }
@@ -62,7 +61,7 @@ function CreateRiddleObj() {
 }
 
 async function PrintAllRiddles() {
-  const response = await fetch(URL + "/riddle");
+  const response = await fetch(URL + "/riddles");
   const riddles = await response.json();
   console.log(riddles);
 }
@@ -81,15 +80,19 @@ async function addRiddle() {
 }
 
 async function updateRiddleToServer(riddle) {
-  const response = await fetch(URL + "/riddles/updateRiddle", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(riddle),
-  });
-  const data = await response.json();
-  console.log(data);
+  try {
+    const response = await fetch(URL + "/riddles/updateRiddle", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(riddle),
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
 }
 async function deleteToServer(idRiddle){
   const response = await fetch(URL + "/riddles/deleteRiddle", {
@@ -112,25 +115,24 @@ function changeFromUserToRiddle(riddle) {
     const newContent = rl.question("Insert the new content: ");
     riddle[input] = newContent;
     const mroeChenge = rl
-      .question("Do you want to make more changes? (y/n) ")
-      .toLowerCase();
+    .question("Do you want to make more changes? (y/n) ")
+    .toLowerCase();
     if (mroeChenge === "n") {
       isExit = true;
     }
   }
-  console.log("Changes saved successfully");
   return riddle;
 }
 
 async function updateRiddle() {
-  await getRiddels();
   console.log(ALLRIDDLES);
   const id = Number(rl.question("Enter the riddle ID. "));
-  let riddle = ALLRIDDLES.find((r) => r.id === id);
+  let riddle = ALLRIDDLES.find(r => r.id === id);
   if (riddle) {
+    console.log(riddle);
     const newRiddle = changeFromUserToRiddle(riddle);
     Object.assign(riddle, newRiddle);
-    updateRiddleToServer(newRiddle);
+    await updateRiddleToServer(riddle);
     return;
   }
   console.log("The ID you selected does not exist.");
