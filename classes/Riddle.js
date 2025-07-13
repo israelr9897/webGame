@@ -5,7 +5,8 @@ class Riddle {
   constructor(riddle) {
     this.id = riddle.id;
     this.level = riddle.level;
-    (this.timeLimit = riddle.timeLimit), (this.hint = riddle.hint);
+    this.timeLimit = riddle.timeLimit,
+    this.hint = riddle.hint;
     this.taskDescription = riddle.taskDescription;
     this.correctAnswer = riddle.correctAnswer;
   }

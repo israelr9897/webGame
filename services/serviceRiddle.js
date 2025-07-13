@@ -4,16 +4,19 @@ import {
   ALLRIDDLES,
   addRiddleApi,
   deleteRiddleApi,
-  pdateRiddleApi,
-} from "./apiClient.js";
+  updateRiddleApi,
+} from "../client/riddleApi.js";
 import {
   changeFromUserToRiddle,
   checkLevelSelction,
-  checkUpdateSelction,
   CreateRiddleObj,
-} from "./utilis/functions.js";
+} from "../utilis/functions.js";
 
-function addRiddleApi() {
+function PrintAllRiddles() {
+  console.log(ALLRIDDLES);
+}
+
+function addRiddle() {
   const newRiddle = CreateRiddleObj();
   addRiddleApi(newRiddle);
 }
@@ -81,7 +84,7 @@ function initObjRiddle(level) {
 }
 
 export {
-  addRiddleApi as addRiddle,
+  addRiddle,
   ALLRIDDLES,
   checkLevelSelction,
   PrintAllRiddles,

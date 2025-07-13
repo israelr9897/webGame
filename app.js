@@ -1,5 +1,5 @@
 import rl from "readline-sync";
-import { printMenu } from "./services/utilis/prints.js";
+import { printMenu } from "./utilis/prints.js";
 import { MannegerGame } from "./services/serviceGame.js";
 
 function startGame() {
