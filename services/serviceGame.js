@@ -14,6 +14,7 @@ import {
   updateDataToPlayer,
 } from "./servicePlayer.js";
 import { createPlayer } from "../db/DALplayer.js";
+import { printMenu } from "../utilis/prints.js";
 
 async function flowGame() {
   let player = await welcome();
@@ -39,28 +40,36 @@ async function flowGame() {
   await createPlayer(players);
 }
 
-async function MannegerGame(choice) {
-  await getRiddels();
-  switch (choice) {
-    case "1":
-      flowGame();
-      break;
+async function MannegerGame() {
+  while (true) {
+    printMenu();
+    const choice = rl.question("");
+    await getRiddels();
+    switch (choice) {
+      case "1":
+        flowGame();
+        break;
 
-    case "2":
-      addRiddle();
-      break;
+      case "2":
+        addRiddle();
+        break;
 
-    case "3":
-      PrintAllRiddles();
-      break;
+      case "3":
+        PrintAllRiddles();
+        break;
 
-    case "4":
-      updateRiddle();
-      break;
+      case "4":
+        updateRiddle();
+        break;
 
-    case "5":
-      deleteRiddle();
-      break;
+      case "5":
+        deleteRiddle();
+        break;
+
+      case "0":
+        console.log("GoodBy");
+        return;
+    }
   }
 }
 

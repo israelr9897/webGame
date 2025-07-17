@@ -6,6 +6,7 @@ function printMenu(){
     console.log("4. Update an existing riddle");
     console.log("5. Delete a riddle");
     console.log("6. View leaderboard");
+    console.log("0. Exit");
 }
 
 export {
