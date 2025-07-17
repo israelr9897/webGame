@@ -1,5 +1,5 @@
 import rl from "readline-sync";
-import { getRiddels } from "./apiClient.js";
+import { getRiddels } from "../client/riddleApi.js";
 import {
   addRiddle,
   deleteRiddle,
