@@ -11,7 +11,7 @@ function returnStringOfTime(time) {
 }
 
 async function getPlayerObj(id) {
-  let player = await searchAndGetPlayerByID(id);
+  // let player = await searchAndGetPlayerByID(id);
   if (!player) {
     console.log("The userName isn't find");
     const name = rl.question("What your name?  ");
@@ -22,7 +22,7 @@ async function getPlayerObj(id) {
 
 async function searchAndGetPlayerByID(id) {
   try {
-    const player = getPlayerByID(id);
+    const player = await getPlayerByID(id);
     if (player) {
       return new Player(player.id, player.name, player.lowestTime);
     }
