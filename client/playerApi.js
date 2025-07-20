@@ -14,7 +14,7 @@ async function getPlayerByID(id) {
 
 // await getPlayers()
 // console.log(ALLPLAYERS);
-console.log(await getPlayerByID(2));
+// console.log(await getPlayerByID(2));
 
 export {
   ALLPLAYERS,

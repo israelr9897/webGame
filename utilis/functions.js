@@ -1,3 +1,5 @@
+import rl from "readline-sync";
+
 function checkLevelSelction() {
   const listOfLevels = ["easy", "medium", "hard"];
   console.log("Enter the riddle level (easy / medium / hard):  ");

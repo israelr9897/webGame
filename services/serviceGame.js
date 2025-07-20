@@ -1,5 +1,4 @@
 import rl from "readline-sync";
-import { getRiddels } from "../client/riddleApi.js";
 import {
   addRiddle,
   deleteRiddle,
@@ -44,26 +43,25 @@ async function MannegerGame() {
   while (true) {
     printMenu();
     const choice = rl.question("");
-    await getRiddels();
     switch (choice) {
       case "1":
         flowGame();
         break;
 
       case "2":
-        addRiddle();
+        await addRiddle();
         break;
 
       case "3":
-        PrintAllRiddles();
+        await PrintAllRiddles();
         break;
 
       case "4":
-        updateRiddle();
+        await updateRiddle();
         break;
 
       case "5":
-        deleteRiddle();
+        await deleteRiddle();
         break;
 
       case "0":
