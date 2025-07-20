@@ -1,9 +1,9 @@
 import rl from "readline-sync";
 import { Riddle } from "../classes/Riddle.js";
 import {
-  ALLRIDDLES,
   addRiddleApi,
   deleteRiddleApi,
+  getRiddels,
   updateRiddleApi,
 } from "../client/riddleApi.js";
 import {
@@ -12,33 +12,35 @@ import {
   CreateRiddleObj,
 } from "../utilis/functions.js";
 
-function PrintAllRiddles() {
-  console.log(ALLRIDDLES);
+async function PrintAllRiddles() {
+  const riddles = await getRiddels();
+  console.log(riddles);
 }
 
-function addRiddle() {
+async function addRiddle() {
   const newRiddle = CreateRiddleObj();
-  addRiddleApi(newRiddle);
+  await addRiddleApi(newRiddle);
 }
 
 async function updateRiddle() {
-  console.log(ALLRIDDLES);
-  const id = Number(rl.question("Enter the riddle ID. "));
-  let riddle = ALLRIDDLES.find((r) => r.id === id);
+  const riddles = await getRiddels();
+  console.log(riddles);
+  const id = rl.question("Enter the riddle ID. ");
+  let riddle = riddles.find((r) => r._id === id);
   if (riddle) {
     const newRiddle = changeFromUserToRiddle(riddle);
-    Object.assign(riddle, newRiddle);
-    await updateRiddleApi(riddle);
+    await updateRiddleApi(newRiddle);
     return;
   }
   console.log("The ID you selected does not exist.");
 }
 
 async function deleteRiddle() {
-  console.log(ALLRIDDLES);
-  const id = Number(rl.question("Enter the riddle ID. "));
-  ALLRIDDLES.forEach((riddle) => {
-    if (riddle.id === id) {
+  const riddles = await getRiddels();
+  console.log(riddles);
+  const id = rl.question("Enter the riddle ID. ");
+  riddles.forEach((riddle) => {
+    if (riddle._id === id) {
       console.log(riddle);
     }
   });
@@ -49,43 +51,48 @@ async function deleteRiddle() {
     console.log("Good by");
     return;
   } else if (input === "y") {
-    ALLRIDDLES = ALLRIDDLES.filter((riddle) => riddle.id !== id);
-    deleteRiddleApi(id);
+    await deleteRiddleApi(id);
   }
 }
 
-function initObjRiddle(level) {
+async function initObjRiddle(level) {
+  const riddles = await getRiddels();
   let listOfRiddles = [];
   switch (level) {
     case "easy":
-      listOfRiddles = ALLRIDDLES.map((riddle) => {
-        if (riddle.level === "easy") {
-          return new Riddle(riddle);
-        }
-      }).filter((ridlle) => ridlle);
+      listOfRiddles = riddles
+        .map((riddle) => {
+          if (riddle.level === "easy") {
+            return new Riddle(riddle);
+          }
+        })
+        .filter((ridlle) => ridlle);
       return listOfRiddles;
 
     case "medium":
-      listOfRiddles = ALLRIDDLES.map((riddle) => {
-        if (riddle.level === "medium") {
-          return new Riddle(riddle);
-        }
-      }).filter((ridlle) => ridlle);
+      listOfRiddles = riddles
+        .map((riddle) => {
+          if (riddle.level === "medium") {
+            return new Riddle(riddle);
+          }
+        })
+        .filter((ridlle) => ridlle);
       return listOfRiddles;
 
     case "hard":
-      listOfRiddles = ALLRIDDLES.map((riddle) => {
-        if (riddle.level === "hard") {
-          return new Riddle(riddle);
-        }
-      }).filter((ridlle) => ridlle);
+      listOfRiddles = riddles
+        .map((riddle) => {
+          if (riddle.level === "hard") {
+            return new Riddle(riddle);
+          }
+        })
+        .filter((ridlle) => ridlle);
       return listOfRiddles;
   }
 }
 
 export {
   addRiddle,
-  ALLRIDDLES,
   checkLevelSelction,
   PrintAllRiddles,
   updateRiddle,

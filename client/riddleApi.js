@@ -1,9 +1,8 @@
 const URL = "http://localhost:3100/riddles";
-let ALLRIDDLES = [];
 
 async function getRiddels() {
   const response = await fetch(URL);
-  ALLRIDDLES = await response.json();
+  return await response.json();
 }
 
 async function addRiddleApi(newRiddle) {
@@ -20,7 +19,7 @@ async function addRiddleApi(newRiddle) {
 
 async function updateRiddleApi(riddle) {
   try {
-    const response = await fetch(URL + "/updateRiddle", {
+    const response = await fetch(URL + "/updateRiddle/" + riddle._id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -35,21 +34,14 @@ async function updateRiddleApi(riddle) {
 }
 
 async function deleteRiddleApi(idRiddle) {
-  const response = await fetch(URL + "/deleteRiddle", {
+  const response = await fetch(URL + "/deleteRiddle/" + idRiddle, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id: idRiddle }),
   });
   const data = await response.json();
   console.log(data);
 }
 
-export {
-  ALLRIDDLES,
-  getRiddels,
-  addRiddleApi,
-  deleteRiddleApi,
-  updateRiddleApi,
-};
+export { getRiddels, addRiddleApi, deleteRiddleApi, updateRiddleApi };
