@@ -7,7 +7,7 @@ class Player {
 
   constructor(id, name, lowestTime) {
     this.id = id;
-    this.name = name;
+    this.username = name;
     this.lowestTime = lowestTime;
   }
 
