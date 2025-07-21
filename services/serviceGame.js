@@ -10,18 +10,17 @@ import {
 import {
   getPlayerObj,
   isLowerTime,
-  updateDataToPlayer,
+  updatePlayer,
 } from "./servicePlayer.js";
-import { createPlayer } from "../db/DALplayer.js";
 import { printMenu } from "../utilis/prints.js";
 
 async function flowGame() {
   let player = await welcome();
+  console.log("Hello ", player.username);
   let level = checkLevelSelction();
   console.log("\nLet's get started.");
   while (true) {
-    const listOfRiddles = initObjRiddle(level);
-    console.log(listOfRiddles);
+    const listOfRiddles = await initObjRiddle(level);
     listOfRiddles.forEach((riddle) => riddle.startAsk(player));
     const choice = rl
       .question("Would you like to continue to another level? (y/n)")
@@ -35,8 +34,7 @@ async function flowGame() {
   console.log("We're done, well done Aniat for all the riddels!\n");
   player.showStats();
   player = isLowerTime(player);
-  const players = await updateDataToPlayer(player);
-  await createPlayer(players);
+  await updatePlayer(player);
 }
 
 async function MannegerGame() {
@@ -45,7 +43,7 @@ async function MannegerGame() {
     const choice = rl.question("");
     switch (choice) {
       case "1":
-        flowGame();
+        await flowGame();
         break;
 
       case "2":

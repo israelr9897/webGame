@@ -1,5 +1,4 @@
 const URL = "http://localhost:3100/players";
-let ALLPLAYERS = [];
 
 async function getPlayersApi() {
   const response = await fetch(URL);
@@ -25,22 +24,20 @@ async function addPlayerApi(newPlayer) {
 }
 
 async function updatePlayerApi(player) {
-  const response = await fetch(`${URL}/${player.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(player),
-  });
-  console.log(await response.json());
+  try {
+    console.log(player.lowestTime);
+    console.log(player.id);
+    const response = await fetch(`${URL}/${player.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ time: player.lowestTime }),
+    });
+    console.log(await response.json());
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-console.log(await getPlayersApi());
-await updatePlayerApi({ id: 1, username: "israel", best_time: 6 });
-console.log(await getPlayersApi());
-// console.log(await getPlayerByID(1));
-// await addPlayerApi({ username: "moshe" });
-// console.log(ALLPLAYERS);
-// console.log(await getPlayerByID(2));
-
-export { getPlayersApi, getPlayerByIDApi, addPlayerApi };
+export { getPlayersApi, getPlayerByIDApi, addPlayerApi, updatePlayerApi };

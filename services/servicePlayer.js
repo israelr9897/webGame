@@ -1,7 +1,11 @@
 import rl from "readline-sync";
 import { Player } from "../classes/Player.js";
 import { readFileToPlayers } from "../db/DALplayer.js";
-import { ALLPLAYERS, getPlayerByID } from "../client/playerApi.js";
+import {
+  addPlayerApi,
+  getPlayerByIDApi,
+  updatePlayerApi,
+} from "../client/playerApi.js";
 
 function returnStringOfTime(time) {
   const seconds = Math.floor((time / 1000) % 60);
@@ -11,10 +15,11 @@ function returnStringOfTime(time) {
 }
 
 async function getPlayerObj(id) {
-  // let player = await searchAndGetPlayerByID(id);
+  let player = await searchAndGetPlayerByID(id);
   if (!player) {
     console.log("The userName isn't find");
     const name = rl.question("What your name?  ");
+    await addPlayerApi({ username: name });
     player = new Player(0, name);
   }
   return player;
@@ -22,9 +27,9 @@ async function getPlayerObj(id) {
 
 async function searchAndGetPlayerByID(id) {
   try {
-    const player = await getPlayerByID(id);
+    const player = (await getPlayerByIDApi(id))[0];
     if (player) {
-      return new Player(player.id, player.name, player.lowestTime);
+      return new Player(player.id, player.username, player.lowestTime);
     }
     return false;
   } catch (err) {
@@ -32,35 +37,18 @@ async function searchAndGetPlayerByID(id) {
   }
 }
 
-async function updateDataToPlayer(player) {
-  let players = await readFileToPlayers();
-  if (player.id === 0) {
-    player.id = players.length + 1;
-    players.push(player);
-    return players;
-  }
-  players.forEach((p) => {
-    if (p.id === player.id) {
-      p.lowestTime = player.lowestTime;
-    }
-  });
-  return players;
+async function updatePlayer(player) {
+  await updatePlayerApi(player);
 }
 
 function isLowerTime(player) {
-  if (
-    player.lowestTime === undefined ||
-    player.average < player.lowestTime.time
-  ) {
-    player.lowestTime = {
-      time: player.average,
-      timeOfStr: returnStringOfTime(player.average),
-    };
-    console.log(`\nGreat job, ${player.name}!`);
-    console.log("Your time: " + player.lowestTime.timeOfStr);
+  if (player.lowestTime === 0 || player.average < player.lowestTime.time) {
+    player.lowestTime = player.average;
+    console.log(`\nGreat job, ${player.username}!`);
+    console.log("Your time: " + returnStringOfTime(player.lowestTime));
     console.log("New record! Time updated.");
   }
   return player;
 }
 
-export { returnStringOfTime, getPlayerObj, isLowerTime, updateDataToPlayer };
+export { returnStringOfTime, getPlayerObj, isLowerTime, updatePlayer };
