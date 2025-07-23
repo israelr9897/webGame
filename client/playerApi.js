@@ -20,13 +20,12 @@ async function addPlayerApi(newPlayer) {
     body: JSON.stringify(newPlayer),
   });
   const data = await response.json();
-  console.log(data);
+  console.log(data.msg);
+  return data.plId;
 }
 
 async function updatePlayerApi(player) {
   try {
-    console.log(player.lowestTime);
-    console.log(player.id);
     const response = await fetch(`${URL}/${player.id}`, {
       method: "PUT",
       headers: {
@@ -34,7 +33,8 @@ async function updatePlayerApi(player) {
       },
       body: JSON.stringify({ time: player.lowestTime }),
     });
-    console.log(await response.json());
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
     console.log(error);
   }

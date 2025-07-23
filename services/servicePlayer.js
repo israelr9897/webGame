@@ -1,6 +1,5 @@
 import rl from "readline-sync";
 import { Player } from "../classes/Player.js";
-import { readFileToPlayers } from "../db/DALplayer.js";
 import {
   addPlayerApi,
   getPlayerByIDApi,
@@ -19,8 +18,14 @@ async function getPlayerObj(id) {
   if (!player) {
     console.log("The userName isn't find");
     const name = rl.question("What your name?  ");
-    await addPlayerApi({ username: name });
-    player = new Player(0, name);
+    const ID = await addPlayerApi({ username: name });
+    player = new Player(ID, name, 0);
+  } else {
+    console.log(
+      `Hi ${player.username}, Your record so far is - ${returnStringOfTime(
+        player.lowestTime
+      )} seconds`
+    );
   }
   return player;
 }
@@ -42,7 +47,9 @@ async function updatePlayer(player) {
 }
 
 function isLowerTime(player) {
-  if (player.lowestTime === 0 || player.average < player.lowestTime.time) {
+  console.log(player.lowestTime);
+  console.log(player.average);
+  if (player.lowestTime === 0 || player.average < player.lowestTime) {
     player.lowestTime = player.average;
     console.log(`\nGreat job, ${player.username}!`);
     console.log("Your time: " + returnStringOfTime(player.lowestTime));
