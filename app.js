@@ -1,7 +1,3 @@
-import { MannegerGame } from "./services/serviceGame.js";
+import { welcome } from "./services/serviceLogin.js";
 
-function startGame() {
-  MannegerGame();
-}
-
-startGame();
+welcome();
