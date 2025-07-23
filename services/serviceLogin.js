@@ -13,13 +13,13 @@ export async function MenagerLogin() {
   switch (input) {
     case "1":
       const user = await login();
-      console.log(user);
       if (user.role === "user") User(user);
       if (user.role === "admin") admin(user);
       break;
 
     case "2":
       await Registration();
+      await login();
       break;
 
     case "3":
@@ -30,7 +30,7 @@ export async function MenagerLogin() {
 
 export async function login() {
   const user = {
-    id: rl.question("Enter your ID: "),
+    id: rl.question("\nEnter your ID: "),
     password: rl.question("Enter your password: "),
   };
   return await loginApi(user);
@@ -41,6 +41,7 @@ export async function Registration() {
     username: rl.question("Enter Your name: "),
     hash_password: rl.question("Enter password: "),
   };
-  await addPlayerApi(newUser);
+  const id = await addPlayerApi(newUser);
+  console.log("Your ID - ", id);
 }
 
