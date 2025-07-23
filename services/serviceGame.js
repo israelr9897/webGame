@@ -7,11 +7,7 @@ import {
   updateRiddle,
   initObjRiddle,
 } from "./serviceRiddle.js";
-import {
-  getPlayerObj,
-  isLowerTime,
-  updatePlayer,
-} from "./servicePlayer.js";
+import { getPlayerObj, isLowerTime, updatePlayer } from "./servicePlayer.js";
 import { printMenu } from "../utilis/prints.js";
 
 async function flowGame() {
@@ -19,6 +15,7 @@ async function flowGame() {
   console.log("Hello ", player.username);
   let level = checkLevelSelction();
   console.log("\nLet's get started.");
+
   while (true) {
     const listOfRiddles = await initObjRiddle(level);
     listOfRiddles.forEach((riddle) => riddle.startAsk(player));
@@ -31,6 +28,7 @@ async function flowGame() {
     console.log("Choose difficulty: easy / medium / hard:\n");
     level = checkLevelSelction();
   }
+
   console.log("We're done, well done Aniat for all the riddels!\n");
   player.showStats();
   player = isLowerTime(player);
@@ -73,7 +71,7 @@ async function welcome() {
   const name = "";
   console.log("---------- Welcome to the game ----------\n");
   const id = rl.question("Enter your ID, Or Enter 00 To register: ");
-  const player = await getPlayerObj(id);
+  const player = getPlayerObj(id);
   return player;
 }
 
