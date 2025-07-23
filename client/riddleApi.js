@@ -1,7 +1,13 @@
+import { TOKEN } from "./playerApi.js";
+
 const URL = "http://localhost:3100/riddles";
 
 async function getRiddels() {
-  const response = await fetch(URL);
+  const response = await fetch(URL, {
+    headers: {
+      authorization: TOKEN,
+    },
+  });
   return await response.json();
 }
 
@@ -10,6 +16,7 @@ async function addRiddleApi(newRiddle) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: TOKEN,
     },
     body: JSON.stringify(newRiddle),
   });
@@ -23,6 +30,7 @@ async function updateRiddleApi(riddle) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        authorization: TOKEN,
       },
       body: JSON.stringify(riddle),
     });
@@ -38,6 +46,7 @@ async function deleteRiddleApi(idRiddle) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: TOKEN,
     },
   });
   const data = await response.json();

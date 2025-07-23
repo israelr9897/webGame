@@ -1,7 +1,5 @@
-import rl from "readline-sync";
 import { Player } from "../classes/Player.js";
 import {
-  addPlayerApi,
   getPlayerByIDApi,
   updatePlayerApi,
 } from "../client/playerApi.js";
@@ -13,34 +11,27 @@ function returnStringOfTime(time) {
   return `${hours}:${minutes}:${seconds}`;
 }
 
-async function getPlayerObj(id) {
-  let player = await searchAndGetPlayerByID(id);
-  if (!player) {
-    console.log("The userName isn't find");
-    const name = rl.question("What your name?  ");
-    const ID = await addPlayerApi({ username: name });
-    player = new Player(ID, name, 0);
-  } else {
-    console.log(
-      `Hi ${player.username}, Your record so far is - ${returnStringOfTime(
-        player.lowestTime
-      )} seconds`
-    );
-  }
+async function getPlayerObj(user) {
+  const player = new Player(user.id, user.username, user.lowestTime);
+  console.log(
+    `Hi ${player.username}, Your record so far is - ${returnStringOfTime(
+      player.lowestTime
+    )} seconds`
+  );
   return player;
 }
 
-async function searchAndGetPlayerByID(id) {
-  try {
-    const player = (await getPlayerByIDApi(id))[0];
-    if (player) {
-      return new Player(player.id, player.username, player.lowestTime);
-    }
-    return false;
-  } catch (err) {
-    console.log("search and get player error massegs: " + err);
-  }
-}
+// async function searchAndGetPlayerByID(id) {
+//   try {
+//     const player = (await getPlayerByIDApi(id))[0];
+//     if (player) {
+//       return new Player(player.id, player.username, player.lowestTime);
+//     }
+//     return false;
+//   } catch (err) {
+//     console.log("search and get player error massegs: " + err);
+//   }
+// }
 
 async function updatePlayer(player) {
   await updatePlayerApi(player);
