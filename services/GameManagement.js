@@ -7,10 +7,12 @@ import {
 import rl from "readline-sync";
 import { game, stGame, endGame } from "./serviceGame.js";
 import { printMenuAdmin, printMenuUser } from "../utilis/prints.js";
+import { Player } from "../classes/Player.js";
 
 export async function guest() {
   console.log("---------- Welcome to the game ----------\n");
-  await game();
+  const name = rl.question("Enter your name: ")
+  await game(new Player(0,name));
   console.log("Good By");
 }
 

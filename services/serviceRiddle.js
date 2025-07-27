@@ -3,7 +3,7 @@ import { Riddle } from "../classes/Riddle.js";
 import {
   addRiddleApi,
   deleteRiddleApi,
-  getRiddels,
+  getRiddelsApi,
   updateRiddleApi,
 } from "../client/riddleApi.js";
 import {
@@ -13,7 +13,7 @@ import {
 } from "../utilis/functions.js";
 
 async function PrintAllRiddles() {
-  const riddles = await getRiddels();
+  const riddles = await getRiddelsApi();
   console.log(riddles);
 }
 
@@ -23,7 +23,7 @@ async function addRiddle() {
 }
 
 async function updateRiddle() {
-  const riddles = await getRiddels();
+  const riddles = await getRiddelsApi();
   console.log(riddles);
   const id = rl.question("Enter the riddle ID. ");
   let riddle = riddles.find((r) => r._id === id);
@@ -36,7 +36,7 @@ async function updateRiddle() {
 }
 
 async function deleteRiddle() {
-  const riddles = await getRiddels();
+  const riddles = await getRiddelsApi();
   console.log(riddles);
   const id = rl.question("Enter the riddle ID. ");
   riddles.forEach((riddle) => {
@@ -56,7 +56,7 @@ async function deleteRiddle() {
 }
 
 async function initObjRiddle(level) {
-  const riddles = await getRiddels();
+  const riddles = await getRiddelsApi();
   let listOfRiddles = [];
   switch (level) {
     case "easy":
