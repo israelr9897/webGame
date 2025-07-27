@@ -3,7 +3,7 @@ import rl from "readline-sync";
 class Riddle {
   totalTime;
   constructor(riddle) {
-    this.id = riddle.id;
+    this.id = riddle._id;
     this.level = riddle.level;
     this.timeLimit = riddle.timeLimit,
     this.hint = riddle.hint;

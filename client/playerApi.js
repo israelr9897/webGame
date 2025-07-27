@@ -1,5 +1,5 @@
-const URL = "http://localhost:3100/players";
-export let TOKEN;
+import { TOKEN } from "./signApi.js";
+const URL = "http://127.0.0.1:3100/players";
 
 async function getPlayersApi() {
   const response = await fetch(URL, {
@@ -18,35 +18,6 @@ async function getPlayerByIDApi(id) {
   });
   const player = await response.json();
   return player;
-}
-
-async function loginApi(player) {
-  const response = await fetch(URL + "/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: TOKEN,
-    },
-    body: JSON.stringify(player),
-  });
-  TOKEN = response.headers.get("authorization");
-  const data = await response.json();
-  console.log(data.msg);
-  return data.Player;
-}
-
-async function addPlayerApi(newPlayer) {
-  const response = await fetch(URL + "/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: TOKEN,
-    },
-    body: JSON.stringify(newPlayer),
-  });
-  const data = await response.json();
-  console.log(data.msg);
-  return data.plId;
 }
 
 async function updatePlayerApi(player) {
@@ -69,7 +40,5 @@ async function updatePlayerApi(player) {
 export {
   getPlayersApi,
   getPlayerByIDApi,
-  addPlayerApi,
   updatePlayerApi,
-  loginApi,
 };

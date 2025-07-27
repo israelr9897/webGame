@@ -1,14 +1,16 @@
-import { TOKEN } from "./playerApi.js";
+import { TOKEN } from "./signApi.js";
 
-const URL = "http://localhost:3100/riddles";
+const URL = "http://127.0.0.1:3100/riddles";
 
-async function getRiddels() {
+async function getRiddelsApi() {
   const response = await fetch(URL, {
     headers: {
       authorization: TOKEN,
+      password: "9897"
     },
   });
-  return await response.json();
+  const data = await response.json();
+  return data;
 }
 
 async function addRiddleApi(newRiddle) {
@@ -42,15 +44,19 @@ async function updateRiddleApi(riddle) {
 }
 
 async function deleteRiddleApi(idRiddle) {
-  const response = await fetch(URL + "/deleteRiddle/" + idRiddle, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: TOKEN,
-    },
-  });
-  const data = await response.json();
-  console.log(data);
+  try {
+    const response = await fetch(URL + "/deleteRiddle/" + idRiddle, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: TOKEN,
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("delete ", error);
+  }
 }
 
-export { getRiddels, addRiddleApi, deleteRiddleApi, updateRiddleApi };
+export { getRiddelsApi, addRiddleApi, deleteRiddleApi, updateRiddleApi };

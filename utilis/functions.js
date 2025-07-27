@@ -37,7 +37,6 @@ function checkUpdateSelction() {
 
 function CreateRiddleObj() {
   const riddleObj = {
-    id: 0,
     level: checkLevelSelction(),
     name: rl.question("Enter name of the riddle: "),
     timeLimit: rl.question("Enter time limit of the riddle: "),
