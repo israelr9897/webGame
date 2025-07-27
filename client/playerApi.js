@@ -1,6 +1,14 @@
 import { TOKEN } from "./signApi.js";
 const URL = "http://127.0.0.1:3100/players";
 
+async function getFiveWinPlayersApi() {
+  const response = await fetch(URL + "/fivewin", {
+    headers: {
+      authorization: TOKEN,
+    },
+  });
+  return await response.json();
+}
 async function getPlayersApi() {
   const response = await fetch(URL, {
     headers: {
@@ -39,6 +47,7 @@ async function updatePlayerApi(player) {
 
 export {
   getPlayersApi,
+  getFiveWinPlayersApi,
   getPlayerByIDApi,
   updatePlayerApi,
 };

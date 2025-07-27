@@ -14,7 +14,7 @@ import {
 
 async function PrintAllRiddles() {
   const riddles = await getRiddelsApi();
-  console.log(riddles);
+  console.table(riddles);
 }
 
 async function addRiddle() {

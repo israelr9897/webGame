@@ -1,6 +1,7 @@
 import { Player } from "../classes/Player.js";
 import {
-  getPlayerByIDApi,
+  getFiveWinPlayersApi,
+  getPlayersApi,
   updatePlayerApi,
 } from "../client/playerApi.js";
 
@@ -21,18 +22,6 @@ async function getPlayerObj(user) {
   return player;
 }
 
-// async function searchAndGetPlayerByID(id) {
-//   try {
-//     const player = (await getPlayerByIDApi(id))[0];
-//     if (player) {
-//       return new Player(player.id, player.username, player.lowestTime);
-//     }
-//     return false;
-//   } catch (err) {
-//     console.log("search and get player error massegs: " + err);
-//   }
-// }
-
 async function updatePlayer(player) {
   await updatePlayerApi(player);
 }
@@ -49,4 +38,31 @@ function isLowerTime(player) {
   return player;
 }
 
-export { returnStringOfTime, getPlayerObj, isLowerTime, updatePlayer };
+async function printFiveWinPlayers() {
+  const data = await getFiveWinPlayersApi();
+  const newData = data.map((d) => ({
+    id: d.id,
+    username: d.username,
+    lowestTime: returnStringOfTime(d.lowestTime),
+  }));
+  console.table(newData);
+}
+
+async function printAllPlayers() {
+  const data = await getPlayersApi();
+  const newData = data.map((d) => ({
+    id: d.id,
+    username: d.username,
+    lowestTime: returnStringOfTime(d.lowestTime),
+  }));
+  console.table(newData);
+}
+
+export {
+  returnStringOfTime,
+  getPlayerObj,
+  isLowerTime,
+  updatePlayer,
+  printAllPlayers,
+  printFiveWinPlayers,
+};

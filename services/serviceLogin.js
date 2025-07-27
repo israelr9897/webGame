@@ -27,14 +27,14 @@ export async function MenagerLogin() {
 
 export async function login() {
   try {
-    const idAndPass = {
-      id: rl.question("\nEnter your ID: "),
+    const usernsmeAndPass = {
+      username: rl.question("\nEnter your userName: "),
       password: rl.question("Enter your password: ", { hideEchoBack: true }),
     };
-    const user = await loginApi(idAndPass);
+    const user = await loginApi(usernsmeAndPass);
     if (user) {
-      if (user.role === "user") User(user);
-      if (user.role === "admin") admin(user);
+      if (user.role === "user") await User(user);
+      if (user.role === "admin") await admin(user);
     } else {
       console.log("Incorrect ID and/or password.");
       await login();
@@ -50,9 +50,12 @@ export async function Registration() {
       username: rl.question("Enter Your name: "),
       hash_password: rl.question("Enter password: "),
     };
-    const id = await signupUserApi(newUser);
-    console.log("Your ID - ", id);
-    await login();
+    const isTrue = await signupUserApi(newUser);
+    if (!isTrue) {
+      Registration();
+    } else {
+      await login();
+    }
   } catch (error) {
     console.log("Registration massage error: ", error);
   }
