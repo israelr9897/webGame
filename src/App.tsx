@@ -1,12 +1,27 @@
+import { Route, Routes } from "react-router";
+import "./App.css";
+import WelcomePage from "./pages/WelcomPage";
+import HomePage from "./pages/HomePage";
+import PlayGamePage from "./pages/PlayGamePage";
+import LoginPage from "./pages/LoginPage";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import Footer from "./compes/Footer";
+import Header from "./compes/header";
+import "./styles/header.css"
+import "./styles/footer.css"
 
-import './App.css'
-
-function App() {
+export default function App() {
   return (
     <>
-      App
+      <Header />
+      <Routes>
+        <Route path="/wlcome" element={<WelcomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/play-game" element={<PlayGamePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+      </Routes>
+      <Footer/>
     </>
-  )
+  );
 }
-
-export default App

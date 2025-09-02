@@ -1,0 +1,64 @@
+.home-page{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.logo-home{
+    width: 55%;
+    height: 40%;
+
+}
+
+.Content-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    height: 60%;
+    border: 1px #C7AE6A solid;
+    gap: 30px;
+
+}
+
+.buttons{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-conetne-home{
+
+    width: 70%;
+    height: 17%;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 25px;
+    background-color: #C7AE6A;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #113F61;
+    text-decoration-line: none;
+}
+
+.btn-conetne-home:hover {
+    background-color: #c8a647;
+    transform: translateY(-1px);
+    cursor: pointer;
+}
+
+.btn-conetne-home > img{
+    width: 10%;
+    height: 65%;
+}
