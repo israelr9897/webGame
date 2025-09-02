@@ -1,5 +1,4 @@
 import { TOKEN } from "./signApi.js";
-
 const URL = "http://127.0.0.1:3100/riddles";
 
 async function getRiddelsApi() {

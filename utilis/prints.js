@@ -6,7 +6,7 @@ function printMenuAdmin() {
   console.log("4. Update an existing riddle");
   console.log("5. Delete a riddle");
   console.log("6. View all players");
-  console.log("7. The five players win");
+  console.log("7. The five players win");                      
   console.log("0. Exit");
 }
 function printMenuUser() {
