@@ -1,5 +1,3 @@
-import { login, Registration } from "../services/serviceLogin.js";
-
 const URL = "http://127.0.0.1:3100/auth";
 export let TOKEN;
 
