@@ -4,10 +4,11 @@ import "../styles/PlayGame.css";
 import arrow from "../assets/arrow2.png";
 import home from "../assets/home.png";
 import { useState } from "react";
+import Game from "./Game";
 
 export default function ContentPlayGame() {
   const [isPlay, setIsPlay] = useState<boolean>(false);
-  return !isPlay ? (
+  return !isPlay? (
     <div className="ContentPlayGame">
       <p>Ready to Play?</p>
       <Link className="btn-play-game" to="" onClick={() => setIsPlay(true)}>
@@ -19,7 +20,5 @@ export default function ContentPlayGame() {
         <img className="img-home" src={home} alt="" />
       </Link>
     </div>
-  ) : (
-    isPlay && <p>gf</p>
-  );
+  ): <Game/>;
 }

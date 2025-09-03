@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { use, useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import { loginApi } from "./API/client";
-import "../styles/auth.css"
+import { loginApi } from "./API/playerApi";
+import "../styles/auth.css";
+import { userContext } from "../context/userContext";
 
 export default function SignIn() {
   async function handleClick() {
@@ -9,11 +10,18 @@ export default function SignIn() {
       username: userName!,
       password: password!,
     });
-    if (isExist) navigate("/userMenu");
-    else alert("The username or password are incorrect");
+    if (isExist) {
+      setMsg("✅ Login successful!");
+      user?.setUserName(userName!);
+      setTimeout(() => {
+        navigate("/userMenu");
+      }, 3000);
+    } else setMsg("❌ The username or password are incorrect");
   }
   const [userName, setUserName] = useState<string>();
+  const user = useContext(userContext);
   const [password, setPassword] = useState<string>();
+  const [msg, setMsg] = useState<string | null>();
   const navigate = useNavigate();
   return (
     <div className="signIn">
@@ -38,7 +46,10 @@ export default function SignIn() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div className="btn-enter" onClick={handleClick}>Enter</div>
+      <div className="btn-enter" onClick={handleClick}>
+        Enter
+      </div>
+      {msg && <p className="msg">{msg}</p>}
     </div>
   );
 }

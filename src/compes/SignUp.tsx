@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/auth.css";
-import { signupUserApi } from "./API/client";
+import { signupUserApi } from "./API/playerApi";
 
 export default function SignUp() {
   async function handleClick() {
@@ -9,12 +9,17 @@ export default function SignUp() {
       username: userName!,
     });
     console.log(isTrue);
-    if (isTrue) window.location.reload();
-    else alert("Registration failed");
+    if (isTrue) {
+      setMsg("✅ Registration was successful.");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } else setMsg("❌ Registration failed");
   }
 
   const [userName, setUserName] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [msg, setMsg] = useState<string | null>();
   return (
     <div className="signUp">
       <h1>Sign Up</h1>
@@ -41,7 +46,7 @@ export default function SignUp() {
       <div className="btn-enter" onClick={handleClick}>
         Enter
       </div>
+      {msg && <p className="msg">{msg}</p>}
     </div>
-    // </div>
   );
 }

@@ -1,5 +1,5 @@
 const URL = "http://127.0.0.1:3100/auth";
-let TOKEN: string;
+export let TOKEN: string;
 
 type Player = {
   username: string;
