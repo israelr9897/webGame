@@ -1,5 +1,9 @@
+import ContentPlayGame from "../compes/ContentPlayGame";
+
 export default function PlayGamePage() {
   return (
-    <div>PlayPage</div>
+    <div className="PlayGamePage">
+      <ContentPlayGame/>
+    </div>
   )
 }

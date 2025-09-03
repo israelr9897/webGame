@@ -1,5 +1,5 @@
 import "../styles/home.css";
-import imgLogo from "../assets/logo.png";
+import imgLogo from "../assets/text.png";
 import BtnPlay from "./BtnPlay";
 import BtnLogin from "./BtnLogin";
 import BtnLeaderboard from "./BtnLeaderboard";
@@ -8,6 +8,7 @@ export default function ContentHome() {
   return (
     <div className="Content-home">
       <img className="logo-home" src={imgLogo}></img>
+      <p>Challenge Your Mind with Epic Riddles</p>
       <div className="buttons">
       <BtnPlay />
       <BtnLogin />

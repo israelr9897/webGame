@@ -6,22 +6,25 @@
     align-items: center;
     justify-content: center;
     padding: 1%;
-}
-
-.logo-home{
-    width: 55%;
-    height: 40%;
-
+    color: #C7AE6A;
 }
 
 .Content-home{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 60%;
-    border: 1px #C7AE6A solid;
+    width: 35%;
+    height: 80%;
+    /* border: 1px #C7AE6A solid; */
     gap: 30px;
+    padding: 5px;
+    font-size: 20px;
+
+}
+
+.logo-home{
+    width: 75%;
+    /* height: 25%; */
 
 }
 
