@@ -3,7 +3,7 @@ import "./App.css";
 import WelcomePage from "./pages/WelcomPage";
 import HomePage from "./pages/HomePage";
 import PlayGamePage from "./pages/PlayGamePage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/AuthPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import Footer from "./compes/Footer";
 import Header from "./compes/header";
@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/play-game" element={<PlayGamePage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/auth" element={<LoginPage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
       </Routes>
       <Footer/>
