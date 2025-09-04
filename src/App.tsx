@@ -10,6 +10,7 @@ import Header from "./compes/header";
 import "./styles/header.css";
 import "./styles/footer.css";
 import UserContext from "./context/userContext";
+import RiddlesPage from "./pages/RiddlesPage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/play-game" element={<PlayGamePage />} />
           <Route path="/auth" element={<LoginPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/riddles" element={<RiddlesPage />} />
         </Routes>
       </UserContext>
       <Footer />

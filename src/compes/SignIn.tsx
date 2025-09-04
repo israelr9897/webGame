@@ -1,25 +1,26 @@
-import { use, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { loginApi } from "./API/playerApi";
 import "../styles/auth.css";
 import { userContext } from "../context/userContext";
 
 export default function SignIn() {
+  const user = useContext(userContext);
   async function handleClick() {
-    const isExist = await loginApi({
+    const player = await loginApi({
       username: userName!,
       password: password!,
     });
-    if (isExist) {
+    console.log(player)
+    if (player) {
       setMsg("✅ Login successful!");
-      user?.setUserName(userName!);
       setTimeout(() => {
-        navigate("/userMenu");
+        navigate("/home");
       }, 3000);
+      user?.setUser(player)
     } else setMsg("❌ The username or password are incorrect");
   }
   const [userName, setUserName] = useState<string>();
-  const user = useContext(userContext);
   const [password, setPassword] = useState<string>();
   const [msg, setMsg] = useState<string | null>();
   const navigate = useNavigate();

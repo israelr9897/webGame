@@ -35,3 +35,8 @@
 .btn-answer:hover{
     cursor: pointer;
 }
+
+.answer-msg{
+    color: red;
+    font-size: 20px;
+}

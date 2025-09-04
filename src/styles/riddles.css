@@ -1,0 +1,47 @@
+.contentRiddles{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px black solid;
+}
+
+.table{
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    border: 1px black solid;
+    
+}
+
+.head-table{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 800;
+    color: #C7AE6A;
+    font-size: 25px;
+}
+
+th, td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    min-height: 60px;
+    border: 1px black solid;
+    
+}
+
+.content-table{
+    display: flex;
+    justify-content: space-around;
+    border: 1px black solid;
+    color: rgb(255, 162, 0);
+    font-size: 16px;
+    
+}
