@@ -8,12 +8,11 @@ export default function SignUp() {
       hash_password: password!,
       username: userName!,
     });
-    console.log(isTrue);
     if (isTrue) {
       setMsg("✅ Registration was successful.");
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1000);
     } else setMsg("❌ Registration failed");
   }
 

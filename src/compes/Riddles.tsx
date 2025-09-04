@@ -12,6 +12,15 @@ type RidlleObj = {
   _id: string;
 };
 
+type Key =
+  | "correctAnswer"
+  | "hint"
+  | "level"
+  | "name"
+  | "taskDescription"
+  | "timeLimit"
+  | "_id";
+
 export default function Riddles() {
   const [data, setData] = useState<Array<RidlleObj>>();
   useEffect(() => {
@@ -31,15 +40,13 @@ export default function Riddles() {
         <th>Level</th>
         <th>Time limit</th>
       </tr>
-      {
-        data?.map((riddle) => (
-          <tr className="content-table">
-            {Object.keys(riddle).map((key) => (
-              <th>{riddle[key]}</th>
-            ))}
-          </tr>
-        ))
-      }
+      {data?.map((riddle) => (
+        <tr className="content-table">
+          {Object.keys(riddle).map((key) => (
+            <th>{riddle[key as Key]}</th>
+          ))}
+        </tr>
+      ))}
     </div>
   );
 }
