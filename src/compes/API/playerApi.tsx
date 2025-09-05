@@ -1,4 +1,4 @@
-const URL = "http://127.0.0.1:3100/auth";
+const URL = "https://riddlesserver.onrender.com/auth";
 export let TOKEN: string;
 
 type Player = {
