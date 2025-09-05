@@ -1,0 +1,42 @@
+.content-ridlle{
+    width: 50%;
+    height: 60%;
+    border: 1px #C7AE6A solid;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    
+}
+
+.question{
+    width: 90%;
+    /* height: 60%; */
+    color: #C7AE6A;
+    border: 1px #C7AE6A solid;
+    
+}
+
+.inp-answer{
+    width: 90%;
+    height: 10%;
+    border: 1px #C7AE6A solid;
+    
+}
+
+.btn-answer{
+    width: 90%;
+    height: 10%;
+    border: 1px #C7AE6A solid;
+    background-color: #C7AE6A;
+    
+}
+.btn-answer:hover{
+    cursor: pointer;
+}
+
+.answer-msg{
+    color: red;
+    font-size: 20px;
+}

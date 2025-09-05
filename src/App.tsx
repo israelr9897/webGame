@@ -3,25 +3,30 @@ import "./App.css";
 import WelcomePage from "./pages/WelcomPage";
 import HomePage from "./pages/HomePage";
 import PlayGamePage from "./pages/PlayGamePage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/AuthPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import Footer from "./compes/Footer";
 import Header from "./compes/header";
-import "./styles/header.css"
-import "./styles/footer.css"
+import "./styles/header.css";
+import "./styles/footer.css";
+import UserContext from "./context/userContext";
+import RiddlesPage from "./pages/RiddlesPage";
 
 export default function App() {
   return (
     <>
+      <UserContext>
       <Header />
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/play-game" element={<PlayGamePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
-      </Routes>
-      <Footer/>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/play-game" element={<PlayGamePage />} />
+          <Route path="/auth" element={<LoginPage />} />
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/riddles" element={<RiddlesPage />} />
+        </Routes>
+      </UserContext>
+      <Footer />
     </>
   );
 }
