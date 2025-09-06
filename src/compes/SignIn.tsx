@@ -1,18 +1,23 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import { loginApi } from "./API/playerApi";
+import { loginApi} from "./API/playerApi";
 import "../styles/auth.css";
-import { userContext } from "../context/userContext";
+import { userContext, type User } from "../context/userContext";
+
+function saveOnLocalStorge(player:User){
+  localStorage.setItem("user", JSON.stringify(player))
+}
 
 export default function SignIn() {
   const user = useContext(userContext);
   async function handleClick() {
-    const player = await loginApi({
+    const player:User | false = await loginApi({
       username: userName!,
       password: password!,
     });
-    console.log(player)
+    // console.log(player)
     if (player) {
+      saveOnLocalStorge(player)
       setMsg("✅ Login successful!");
       setTimeout(() => {
         navigate("/home");

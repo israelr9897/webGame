@@ -1,13 +1,19 @@
-import { createContext, useState, type PropsWithChildren } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+  type PropsWithChildren,
+} from "react";
 
 export const userContext = createContext<UserObj | null>(null);
-type User = {
+export type User = {
   username: string | undefined;
   role: string;
   created_at: string;
   hash_password: string;
   id: string;
   lowestTime: string;
+  token: String;
 };
 type UserObj = {
   user: User;
@@ -21,13 +27,22 @@ const userObj: User = {
   hash_password: "",
   id: "",
   lowestTime: "",
+  token: "",
 };
+
 export default function UserContext({ children }: PropsWithChildren) {
   const [user, setUser] = useState<User>(userObj);
   const Obj: UserObj = {
     user: user,
     setUser: setUser,
   };
+
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+    if (data) {
+      setUser(JSON.parse(data));
+    }
+  }, []);
 
   return (
     <>
