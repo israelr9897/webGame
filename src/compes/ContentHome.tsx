@@ -8,7 +8,7 @@ export default function ContentHome() {
   return (
     <div className="Content-home">
       <img className="logo-home" src={imgLogo}></img>
-      <p>Challenge Your Mind with Epic Riddles</p>
+      <p>Challenge your brain with math riddles</p>
       <div className="buttons">
       <BtnPlay />
       <BtnLogin />

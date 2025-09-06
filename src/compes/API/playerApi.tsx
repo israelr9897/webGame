@@ -26,7 +26,7 @@ export async function loginApi(player: Player) {
   if (!data.Player) {
     return false;
   }
-  return data.Player;
+  return {...data.Player, token: TOKEN};
 }
 
 export async function signupUserApi(newPlayer: NewPlayer) {
