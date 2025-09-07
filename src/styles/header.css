@@ -9,13 +9,26 @@
     color: #C7AE6A;
 }
 
-.left-header, .right-header{
+.left-header{
     display: flex;
+    /* justify-content: e; */
     align-items: center;
+    flex-wrap: wrap;
     height: 100%;
-    height: 100%;
-    gap: 10px;
+    width: 50%;
+    gap: 5px;
     
+}
+
+.right-header{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 50%;
+    gap: 3%;
+
 }
 
 .all-riddles:hover{
@@ -26,14 +39,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    min-width:40% ;
+    height: 70%;
+    min-width:10% ;
     border: 1px #C7AE6A solid;
     border-radius: 30px;
 }
 
 .home-header{
-    width: 45%;
+    width: 10%;
     display: flex;
     align-items: center;
     gap: 3px;
@@ -42,5 +55,19 @@
 }
 
 .img-home{
-    width: 20%;
+    width: 50%;
+}
+
+.logOut{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width:10% ;
+    border: 1px #C7AE6A solid;
+    border-radius: 30px;
+}
+
+.logOut:hover{
+    cursor: pointer
 }
