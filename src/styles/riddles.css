@@ -123,10 +123,10 @@ td,
 
     .btn-add {
         margin-left: 10%;
-        position: absolute;
-        top: 80vh;
-        left: 100px;
-        height: 6%;
-        width: 40%;
+        position: sticky;
+        /* top: 80vh; */
+        left: 40%;
+        height: 60%;
+        width: 10%;
     }
 }
