@@ -41,7 +41,7 @@ export default function Riddles() {
     data && (
       <div className="table">
         <tr className="head-table">
-          <th>ID</th>
+          {/* <th>ID</th> */}
           <th>Level</th>
           <th>Name</th>
           <th>Time limit</th>
