@@ -53,6 +53,18 @@
     width: 15%;
 }
 
-.img-home {
-    width: 7%;
+.img-home-btn {
+    width: 10%;
+}
+
+@media screen and (max-width: 600px){
+    .ContentPlayGame{
+        width: 70%;
+        height: 40%;
+    }
+
+    .ContentPlayGame .btn-play-game{
+        width: 70%;
+        height: 12%;
+    }
 }

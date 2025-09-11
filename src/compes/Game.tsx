@@ -37,7 +37,10 @@ export default function Game() {
   return (
     data && (
       <div className="content-ridlle">
+        <div className="question-level">
         <h1 className="question">{data[index].taskDescription}</h1>
+        <h1 className="level">level: {data[index].level}</h1>
+        </div>
         <input
           className="inp-answer"
           type="text"

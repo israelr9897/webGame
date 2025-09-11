@@ -96,3 +96,31 @@ td,
     border: 2px #C7AE6A solid;
     color: #C7AE6A; */
 }
+
+/* for phones */
+@media screen and (max-width: 600px){
+    .content-table{
+        width: 400%;
+    }
+    .table{
+        overflow-y: scroll;
+        width: 400%;
+    }
+    .head-table{
+        font-size: 13px;
+        font-weight: 100;
+        width: 400%;
+    }
+
+    .btn{
+        width: 400%;
+        justify-content: start;
+    }
+    .btn-add{
+        margin-left: 10%;
+        position: absolute;
+        left: 100px;
+        height: 6%;
+        width: 40%;
+    }
+}

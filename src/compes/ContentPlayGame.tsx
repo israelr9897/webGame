@@ -17,7 +17,7 @@ export default function ContentPlayGame() {
       </Link>
       <Link className="btn-play-game" to="/home">
         <p>Back to Home</p>
-        <img className="img-home" src={home} alt="" />
+        <img className="img-home-btn" src={home} alt="" />
       </Link>
     </div>
   ): <Game/>;

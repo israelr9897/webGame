@@ -6,7 +6,19 @@ import { userContext } from "../context/userContext";
 
 export default function Header() {
   const user = useContext(userContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const logOut = () => {
+    user?.setUser({
+      username: "Guest",
+      role: "",
+      created_at: "",
+      hash_password: "",
+      id: "",
+      lowestTime: "",
+      token: "",
+    });
+    navigate("/")
+  };
   // const handleClick = () => {
   //   navigate("/riddles")
   // }
@@ -15,13 +27,19 @@ export default function Header() {
       <div className="left-header">
         <Link to="/home" className="home-header">
           <img className="img-home" src={home} alt="home" />
-          <p>Home</p>
         </Link>
         <div className="userName-head">{user?.user.username}</div>
       </div>
       <div className="right-header">
-        {user?.user.role && <div className="all-riddles" onClick={() => navigate("/riddles")}>All-Riddles</div>}
+        {user?.user.role && (
+          <div className="all-riddles" onClick={() => navigate("/riddles")}>
+            All-Riddles
+          </div>
+        )}
         <div className="theme">Theme</div>
+        <div className="logOut" onClick={logOut}>
+          Log Out
+        </div>
       </div>
     </div>
   );

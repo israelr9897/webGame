@@ -1,39 +1,52 @@
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 10%;
     border: 1px #C7AE6A solid;
-    padding: 1%;
+    padding: 0 2%;
     color: #C7AE6A;
 }
 
-.left-header, .right-header{
+.left-header {
     display: flex;
+    /* justify-content: e; */
     align-items: center;
+    flex-wrap: wrap;
     height: 100%;
-    height: 100%;
-    gap: 10px;
-    
+    width: 50%;
+    gap: 5px;
+
 }
 
-.all-riddles:hover{
+.right-header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 50%;
+    gap: 3%;
+
+}
+
+.all-riddles:hover {
     cursor: pointer;
 }
 
-.userName-head{
+.userName-head {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    min-width:40% ;
+    height: 55%;
+    min-width: 10%;
     border: 1px #C7AE6A solid;
     border-radius: 30px;
 }
 
-.home-header{
-    width: 45%;
+.home-header {
+    width: 10%;
     display: flex;
     align-items: center;
     gap: 3px;
@@ -41,6 +54,39 @@
     text-decoration-line: none;
 }
 
-.img-home{
-    width: 20%;
+.img-home {
+    width: 50%;
+}
+
+.logOut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55%;
+    width: 10%;
+    border: 1px #C7AE6A solid;
+    border-radius: 30px;
+}
+
+.logOut:hover {
+    cursor: pointer
+}
+
+/* for phones */
+@media screen and (max-width: 800px) {
+    .left-header{
+        width: 40%
+    }
+    .right-header{
+        width: 60%
+    }
+    .home-header {
+        width: 30%;
+    }
+
+    .userName-head, .logOut {
+        min-width: 100px;
+        height: 40%;
+
+    }
 }

@@ -6,6 +6,7 @@ import {
 } from "react";
 
 export const userContext = createContext<UserObj | null>(null);
+
 export type User = {
   username: string | undefined;
   role: string;

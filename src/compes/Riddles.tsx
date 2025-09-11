@@ -4,6 +4,7 @@ import "../styles/riddles.css";
 import deleteIcon from "../assets/delete.png";
 import editIcon from "../assets/edit.png";
 import { userContext } from "../context/userContext";
+import AddRiddle from "./AddRiddle";
 
 type RidlleObj = {
   correctAnswer: string;
@@ -28,12 +29,14 @@ export default function Riddles() {
   const user = useContext(userContext);
   const role = user?.user.role;
   const [data, setData] = useState<Array<RidlleObj>>();
+  const [add, setAdd] = useState<boolean>(false);
   useEffect(() => {
     const getData = async () => {
       setData(await getRiddelsApi());
     };
     getData();
   }, []);
+  console.log(add)
   return (
     data && (
       <div className="table">
@@ -61,8 +64,11 @@ export default function Riddles() {
           </tr>
         ))}
         <div className="btn">
-          <div className="btn-add">Add Riddle</div>
+          <div className="btn-add" onClick={() => setAdd(true)}>Add Riddle</div>
         </div>
+        {add && <div>
+          <AddRiddle/>
+          </div>}
       </div>
     )
   );
