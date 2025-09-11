@@ -1,15 +1,15 @@
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 10%;
     border: 1px #C7AE6A solid;
-    padding: 1%;
+    padding: 0 2%;
     color: #C7AE6A;
 }
 
-.left-header{
+.left-header {
     display: flex;
     /* justify-content: e; */
     align-items: center;
@@ -17,10 +17,10 @@
     height: 100%;
     width: 50%;
     gap: 5px;
-    
+
 }
 
-.right-header{
+.right-header {
     display: flex;
     justify-content: end;
     align-items: center;
@@ -31,21 +31,21 @@
 
 }
 
-.all-riddles:hover{
+.all-riddles:hover {
     cursor: pointer;
 }
 
-.userName-head{
+.userName-head {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70%;
-    min-width:10% ;
+    height: 55%;
+    min-width: 10%;
     border: 1px #C7AE6A solid;
     border-radius: 30px;
 }
 
-.home-header{
+.home-header {
     width: 10%;
     display: flex;
     align-items: center;
@@ -54,20 +54,39 @@
     text-decoration-line: none;
 }
 
-.img-home{
+.img-home {
     width: 50%;
 }
 
-.logOut{
+.logOut {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70%;
-    width:10% ;
+    height: 55%;
+    width: 10%;
     border: 1px #C7AE6A solid;
     border-radius: 30px;
 }
 
-.logOut:hover{
+.logOut:hover {
     cursor: pointer
+}
+
+/* for phones */
+@media screen and (max-width: 800px) {
+    .left-header{
+        width: 40%
+    }
+    .right-header{
+        width: 60%
+    }
+    .home-header {
+        width: 30%;
+    }
+
+    .userName-head, .logOut {
+        min-width: 100px;
+        height: 40%;
+
+    }
 }

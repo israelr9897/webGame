@@ -22,12 +22,6 @@
     
 }
 
-.question{
-    /* width: 90%; */
-    /* border: 1px #C7AE6A solid; */
-    /* height: 60%; */
-    
-}
 .level{
     font-weight: 100;
     font-size: 20px;
@@ -64,4 +58,27 @@
 .answer-msg{
     color: red;
     font-size: 20px;
+}
+
+@media screen and (max-width: 600px){
+    .content-ridlle{
+        width: 90%;
+        height: 30%;
+        gap: 1%;
+    }
+
+    .question-level h1{
+        font-size: 25px;
+    }
+
+    .inp-answer{
+        height: 20%;
+        padding: 10px;
+    }
+
+    .btn-answer{
+        width: 50%;
+        height:15%;
+        font-size: 17px;
+    }
 }

@@ -7,12 +7,14 @@ import BtnLeaderboard from "./BtnLeaderboard";
 export default function ContentHome() {
   return (
     <div className="Content-home">
-      <img className="logo-home" src={imgLogo}></img>
-      <p>Challenge your brain with math riddles</p>
+      <div className="text">
+        <img className="logo-home" src={imgLogo}></img>
+        <p>Challenge your brain with math riddles</p>
+      </div>
       <div className="buttons">
-      <BtnPlay />
-      <BtnLogin />
-      <BtnLeaderboard />
+        <BtnPlay />
+        <BtnLogin />
+        <BtnLeaderboard />
       </div>
     </div>
   );

@@ -22,6 +22,13 @@
 
 }
 
+.text{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .logo-home{
     width: 75%;
     /* height: 25%; */
@@ -64,4 +71,17 @@
 .btn-conetne-home > img{
     width: 10%;
     height: 65%;
+}
+
+/* for phones */
+@media screen and (max-width: 600px){
+    .Content-home{
+        width: 80%;
+    }
+    .btn-conetne-home{
+        width: 100%;
+    }
+    .buttons{
+        margin-top: 15%;
+    }
 }
