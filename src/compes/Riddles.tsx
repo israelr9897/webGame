@@ -36,12 +36,12 @@ export default function Riddles() {
     };
     getData();
   }, []);
-  console.log(add)
+  console.log(add);
   return (
     data && (
       <div className="table">
         <tr className="head-table">
-          {/* <th>ID</th> */}
+          <th>ID</th>
           <th>Level</th>
           <th>Name</th>
           <th>Time limit</th>
@@ -64,11 +64,15 @@ export default function Riddles() {
           </tr>
         ))}
         <div className="btn">
-          <div className="btn-add" onClick={() => setAdd(true)}>Add Riddle</div>
+          <div className="btn-add" onClick={() => setAdd(true)}>
+            Add Riddle
+          </div>
         </div>
-        {add && <div>
-          <AddRiddle/>
-          </div>}
+        {add && (
+          <div>
+            <AddRiddle />
+          </div>
+        )}
       </div>
     )
   );
