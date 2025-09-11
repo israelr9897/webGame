@@ -73,20 +73,27 @@
 }
 
 /* for phones */
-@media screen and (max-width: 800px) {
+@media screen and (max-height: 900px) and (max-width: 800px) {
     .left-header{
-        width: 40%
+        width: 40%;
+        gap: 20px;
     }
     .right-header{
         width: 60%
     }
-    .home-header {
-        width: 30%;
+    .img-home {
+        width: 25px
     }
-
-    .userName-head, .logOut {
-        min-width: 100px;
-        height: 40%;
+    
+    .userName-head {
+        border: 0;
+        
+    }
+    .logOut {
+        width: 60px;
+        border: 0;
+        /* min-width: 100px; */
+        /* height: 40%; */
 
     }
 }

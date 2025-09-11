@@ -14,7 +14,7 @@
     flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
-    border: 1px black solid;
+    /* border: 1px black solid; */
     gap: 10px;
 
 }
@@ -68,13 +68,14 @@ td,
     cursor: pointer;
 }
 
-.btn{
+.btn {
     width: 100%;
-    height:30%;
+    height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .btn-add {
     display: flex;
     justify-content: center;
@@ -90,7 +91,7 @@ td,
 }
 
 
-.btn-add:hover{
+.btn-add:hover {
     cursor: pointer;
     /* background-color: #113F61;
     border: 2px #C7AE6A solid;
@@ -98,27 +99,32 @@ td,
 }
 
 /* for phones */
-@media screen and (max-width: 600px){
-    .content-table{
+@media screen and (max-width: 600px) {
+    .content-table {
         width: 400%;
     }
-    .table{
+
+    .table {
         overflow-y: scroll;
         width: 400%;
     }
-    .head-table{
+
+    .head-table {
         font-size: 13px;
         font-weight: 100;
         width: 400%;
     }
 
-    .btn{
+    .btn {
         width: 400%;
         justify-content: start;
+
     }
-    .btn-add{
+
+    .btn-add {
         margin-left: 10%;
         position: absolute;
+        top: 80vh;
         left: 100px;
         height: 6%;
         width: 40%;
