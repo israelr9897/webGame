@@ -1,4 +1,4 @@
-.header {
+/* .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,7 +11,6 @@
 
 .left-header {
     display: flex;
-    /* justify-content: e; */
     align-items: center;
     flex-wrap: wrap;
     height: 100%;
@@ -72,7 +71,6 @@
     cursor: pointer
 }
 
-/* for phones */
 @media screen and (max-height: 900px) and (max-width: 800px) {
     .left-header{
         width: 40%;
@@ -92,8 +90,177 @@
     .logOut {
         width: 60px;
         border: 0;
-        /* min-width: 100px; */
-        /* height: 40%; */
 
+    }
+} */
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    min-height: 60px;
+    border: 1px #C7AE6A solid;
+    padding: 0 2%;
+    color: #C7AE6A;
+    box-sizing: border-box;
+}
+
+.left-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 50%;
+    gap: 5px;
+}
+
+.right-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 50%;
+    gap: 3%;
+}
+
+.all-riddles:hover {
+    cursor: pointer;
+}
+
+.userName-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55%;
+    min-width: 10%;
+    min-height: 35px;
+    border: 1px #C7AE6A solid;
+    border-radius: 30px;
+    padding: 5px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.home-header {
+    width: 10%;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: #C7AE6A;
+    text-decoration-line: none;
+    font-size: 14px;
+}
+
+.img-home {
+    width: 50%;
+    max-width: 25px;
+    height: auto;
+}
+
+.logOut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55%;
+    width: 10%;
+    min-width: 60px;
+    min-height: 35px;
+    border: 1px #C7AE6A solid;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.logOut:hover {
+    background-color: rgba(199, 174, 106, 0.1);
+}
+
+/* Enhanced Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .header {
+        height: auto;
+        min-height: 50px;
+        padding: 8px 1%;
+        /* flex-wrap: wrap; */
+        gap: 10px;
+    }
+
+    .left-header {
+        width: 60%;
+        gap: 10px;
+    }
+
+    .right-header {
+        width: 40%;
+        gap: 10px;
+    }
+
+    .home-header {
+        min-width: 60px;
+        font-size: 12px;
+    }
+
+    .img-home {
+        width: 20px;
+        height: 20px;
+    }
+
+    .userName-head {
+        min-width: 80px;
+        height: 35px;
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+
+    .logOut {
+        width: 50px;
+        height: 35px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        min-height: 45px;
+        padding: 5px 1%;
+    }
+
+    .left-header {
+        width: 65%;
+    }
+
+    .right-header {
+        width: 35%;
+    }
+
+    .userName-head {
+        border: 0;
+        min-width: 60px;
+        font-size: 11px;
+    }
+
+    .logOut {
+        border: 0;
+        width: 45px;
+        height: 30px;
+        font-size: 11px;
+    }
+
+    .home-header {
+        font-size: 11px;
+        min-width: 50px;
+    }
+
+    .img-home {
+        width: 18px;
+        height: 18px;
     }
 }

@@ -1,3 +1,18 @@
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    background-color: #113F61;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
+
 * {
     padding: 0;
     margin: 0;
@@ -11,4 +26,62 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden; /* למניעת גלילה אופקית לא רצויה */
+}
+
+/* Global Mobile Optimizations */
+html {
+    /* למניעת זום אוטומטי בשדות קלט באייפון */
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px; /* בסיס לחישובי rem */
+}
+
+body {
+    overflow-x: hidden; /* למניעת גלילה אופקית */
+    -webkit-font-smoothing: antialiased; /* פונט חלק יותר */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* שיפור אלמנטי קלט למובייל */
+input, button, textarea, select {
+    font-size: 16px; /* למניעת זום אוטומטי באייפון */
+    -webkit-appearance: none; /* להסרת סגנון דפדפן */
+    border-radius: 0; /* להסרת עיגול אוטומטי באייפון */
+}
+
+button, .btn-enter, .btn-answer, .btn-add, .btn-play-game, .link-enter {
+    -webkit-tap-highlight-color: transparent; /* הסרת הדגשה במגע */
+    touch-action: manipulation; /* שיפור תגובת מגע */
+}
+
+/* שיפור גלילה חלקה */
+* {
+    scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px; /* הקטנת פונט בסיס לטאבלט */
+    }
+    
+    #root {
+        min-height: 100vh;
+        height: auto; /* אפשרות לתוכן ארוך יותר */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 13px; /* הקטנת פונט בסיס לטלפון */
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

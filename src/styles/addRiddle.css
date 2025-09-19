@@ -1,5 +1,33 @@
-.AddRiddle{
+/* .AddRiddle{
     width: 40%;
     height: 70%;
     border: 2px solid #C7AE6A; 
+} */
+
+.AddRiddle {
+    width: 40%;
+    height: 70%;
+    border: 2px solid #C7AE6A;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .AddRiddle {
+        width: 90%;
+        height: auto;
+        min-height: 60vh;
+        padding: 15px;
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .AddRiddle {
+        width: 95%;
+        padding: 10px;
+        border-width: 1px;
+    }
 }
