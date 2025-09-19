@@ -1,4 +1,4 @@
-.welcomePage{
+/* .welcomePage{
     width: 100%;
     height: 80%;
     display: flex;
@@ -47,7 +47,6 @@
 
 }
 
-/* for phones */
 @media screen and (max-width: 600px){
     .img-welcome {
         width: 95%;
@@ -56,5 +55,105 @@
 
     .link-enter{
         width: 30%;
+    }
+} */
+
+
+.welcomePage {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    box-sizing: border-box;
+}
+
+.welcome {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+}
+
+.img-welcome {
+    width: 35%;
+    height: 80%;
+    max-width: 400px;
+    object-fit: contain;
+}
+
+.link-enter {
+    width: 15%;
+    height: 8%;
+    min-width: 120px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #C7AE6A;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #113F61;
+    text-decoration-line: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.link-enter:hover {
+    transform: translateY(-3px);
+    background-color: #c8a647;
+}
+
+/* Enhanced Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .welcomePage {
+        height: auto;
+        min-height: 80vh;
+        padding: 2%;
+    }
+
+    .welcome {
+        gap: 30px;
+        height: auto;
+    }
+
+    .img-welcome {
+        width: 80%;
+        height: auto;
+        max-height: 60vh;
+    }
+
+    .link-enter {
+        width: 30%;
+        min-width: 150px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcomePage {
+        padding: 1%;
+    }
+
+    .welcome {
+        gap: 50px;
+    }
+
+    .img-welcome {
+        width: 95%;
+    }
+
+    .link-enter {
+        width: 50%;
+        min-width: 120px;
+        font-size: 16px;
     }
 }
